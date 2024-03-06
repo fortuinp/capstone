@@ -1,6 +1,6 @@
 import { dbconnection as db } from "../config/index.js";
 import { hash, compare } from "bcrypt";
-import {createToken} from "../middleware/Aunthetication.js"
+import {createToken} from "../middleware/Aunthentication.js"
 class Users {
   fetchUsers(req, res) {
     const qry = `
@@ -19,7 +19,7 @@ class Users {
   fetchUser(req, res) {
     const qry = `
         SELECT UserID,firstName,lastName,
-        userAge,gender,emailAdd,userPassuserRole
+        userAge,gender,emailAdd,userPass,userRole
         FROM Users
         WHERE userID = ${req.params.id}
         `;
