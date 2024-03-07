@@ -1,9 +1,9 @@
 import { dbconnection as db } from "../config/index.js";
-class Products {
-  fetchProducts(req, res) {
+class Cart {
+  fetchCart(req, res) {
     const qry = `
         SELECT prodID,prodName,quantity, amount,prodCategory,prodDescription,prodUrl,prodUrl2
-        FROM Products
+        FROM Cart
         
         `;
     db.query(qry, (err, results) => {
@@ -14,10 +14,10 @@ class Products {
       });
     });
   }
-  fetchProduct(req, res) {
+  fetchCart(req, res) {
     const qry = `
         SELECT prodID,prodName,quantity, amount,prodCategory,prodDescription,prodUrl,prodUrl2
-        FROM Products
+        FROM Cart
         WHERE prodID=${req.params.id}
         `;
     db.query(qry, (err, result) => {
@@ -28,8 +28,8 @@ class Products {
       });
     });
   }
-  addProduct(req, res) {
-    const qry = `INSERT INTO Products SET ?;`;
+  addCart(req, res) {
+    const qry = `INSERT INTO Cart SET ?;`;
 
     db.query(qry, [req.body], (err) => {
       if (err) throw err;
@@ -40,32 +40,32 @@ class Products {
     });
   }
 
-  async updateProduct(req, res) {
+  async updateCart(req, res) {
     const qry = `
-    UPDATE Products 
+    UPDATE Cart 
     SET ?
     WHERE prodID = ${req.params.id};`;
     db.query(qry, [req.body], (err) => {
       if (err) throw err;
       res.json({
         status: res.statusCode,
-        msg: "products updated",
+        msg: "Cart updated",
       });
     });
   }
 
-  deleteProduct(req, res) {
+  deleteCart(req, res) {
     const qry = `
-     DELETE FROM Products
+     DELETE FROM Cart
      WHERE prodID=${req.params.id}
   `;
     db.query(qry, (err) => {
       if (err) throw err;
       res.json({
         status: res.statusCode,
-        msg: "product deleted",
+        msg: "Cart deleted",
       });
     });
   }
 }
-export { Products };
+export { Cart };

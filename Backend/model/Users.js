@@ -62,41 +62,6 @@ class Users {
     });
   }
 
-
-  async updateUser(req,res){
-    const data=req.body
-    if(data?.userPwd){
-      data.userPwd=await hash(data?.userPwd,8)
-    }
-    const qry=`
-  UPDATE Users 
-  SET ?
-  WHERE userID=${req.params.id};`
-  db.query(qry, [data], (err) => {
-      if (err) throw err 
-        res.json({
-          status: res.statusCode,
-          msg: "user updated",
-        
-        })
-      })
-
-  }
-
-  deleteUser(req,res){
-    const qry=`
-   DELETE FROM Users
-   WHERE userID=${req.params.id}
-`
-   db.query(qry, (err) => {
-    if (err) throw err;
-    res.json({
-      status: res.statusCode,
-      msg:"deleted"
-    });
-  });
-  }
-
   login(req,res){
     const{emailAdd,userPass}=req.body
     const qry=`
@@ -134,6 +99,41 @@ class Users {
       }}})
       
   }
+
+  async updateUser(req,res){
+    const data=req.body
+    if(data?.userPwd){
+      data.userPwd=await hash(data?.userPwd,8)
+    }
+    const qry=`
+  UPDATE Users 
+  SET ?
+  WHERE userID=${req.params.id};`
+  db.query(qry, [data], (err) => {
+      if (err) throw err 
+        res.json({
+          status: res.statusCode,
+          msg: "user updated",
+        
+        })
+      })
+
+  }
+
+  deleteUser(req,res){
+    const qry=`
+   DELETE FROM Users
+   WHERE userID=${req.params.id}
+`
+   db.query(qry, (err) => {
+    if (err) throw err;
+    res.json({
+      status: res.statusCode,
+      msg:"deleted"
+    });
+  });
+  }
+
 }
 
 
