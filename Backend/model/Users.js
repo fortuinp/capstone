@@ -98,9 +98,9 @@ class Users {
   }
 
   login(req,res){
-    const{emailAdd,userPwd}=req.body
+    const{emailAdd,userPass}=req.body
     const qry=`
-    SELECT UserID,firstName,lastName,userAge,gender,emailAdd,userPwd,userRole
+    SELECT UserID,firstName,lastName,userAge,gender,emailAdd,userPass,userRole
           FROM Users
           WHERE emailAdd='${emailAdd}';
     `
@@ -113,11 +113,11 @@ class Users {
         });
       }else{
        //validate pswd
-       const validPass = await compare(userPwd, result[0].userPwd);
+       const validPass = await compare(userPass, result[0].userPass);
           if (validPass) {
             const token = createToken({
               emailAdd,
-              userPwd,
+              userPass,
             });
             res.json({
               status: res.statusCode,
