@@ -1,9 +1,11 @@
 import { dbconnection as db } from "../config/index.js";
 class Cart {
-  fetchCart(req, res) {
+  fetchCarts(req, res) {
     const qry = `
-        SELECT prodID,prodName,quantity, amount,prodCategory,prodDescription,prodUrl,prodUrl2
-        FROM Cart
+    SELECT cartID,Users.userID, Products.prodID, Cart.quantity, Products.amount*Cart.quantity as TotalAmount
+    FROM Cart
+    INNER JOIN Products ON Cart.prodID = Products.prodID
+    INNER JOIN Users ON Cart.userID = Users.userID;
         
         `;
     db.query(qry, (err, results) => {
@@ -16,9 +18,11 @@ class Cart {
   }
   fetchCart(req, res) {
     const qry = `
-        SELECT prodID,prodName,quantity, amount,prodCategory,prodDescription,prodUrl,prodUrl2
-        FROM Cart
-        WHERE prodID=${req.params.id}
+    SELECT cartID, Users.userID, Products.prodID, Cart.quantity, Products.amount*Cart.quantity
+    FROM Cart
+    INNER JOIN Products ON Cart.prodID = Products.prodID
+    INNER JOIN Users ON Cart.userID = Users.userID;
+    WHERE cartID=${req.params.id}
         `;
     db.query(qry, (err, result) => {
       if (err) throw err;
@@ -44,7 +48,7 @@ class Cart {
     const qry = `
     UPDATE Cart 
     SET ?
-    WHERE prodID = ${req.params.id};`;
+    WHERE cartID = ${req.params.id};`;
     db.query(qry, [req.body], (err) => {
       if (err) throw err;
       res.json({
@@ -57,7 +61,7 @@ class Cart {
   deleteCart(req, res) {
     const qry = `
      DELETE FROM Cart
-     WHERE prodID=${req.params.id}
+     WHERE cartID=${req.params.id}
   `;
     db.query(qry, (err) => {
       if (err) throw err;

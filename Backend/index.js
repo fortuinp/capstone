@@ -1,5 +1,6 @@
 import { express, userRouter } from "./controllers/UserController.js";
 import { productRouter } from "./controllers/ProductController.js";
+import { cartRouter } from "./controllers/Cart.js";
 import cookieParser from "cookie-parser";
 import { errorHandling } from "./middleware/ErrorHandling.js";
 import path from 'path'
@@ -37,6 +38,7 @@ res.status(200).sendFile(path.join(__dirname,'./static/index.html'))
 })
 app.use('/users',userRouter)
 app.use('/products',productRouter)
+app.use('/cart',cartRouter)
 app.use(errorHandling)
 app.listen(port,()=>{
     console.log(`server is running on ${port}`);

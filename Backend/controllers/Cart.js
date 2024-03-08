@@ -7,7 +7,7 @@ const cartRouter=express.Router()
 //fetch all products
 cartRouter.get('/',(req,res)=>{
     try{
-        cart.fetchcarts(req,res)
+        cart.fetchCarts(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,
@@ -18,7 +18,7 @@ cartRouter.get('/',(req,res)=>{
 })
 cartRouter.get('/:id',(req,res)=>{
     try{
-        cart.fetchcart(req,res)
+        cart.fetchCart(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,
@@ -29,7 +29,7 @@ cartRouter.get('/:id',(req,res)=>{
 })
 cartRouter.post('/addcart',bodyParser.json(),(req,res)=>{
     try{
-        cart.addcart(req,res)
+        cart.addCart(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,
@@ -40,7 +40,7 @@ cartRouter.post('/addcart',bodyParser.json(),(req,res)=>{
 
 cartRouter.delete('/delete/:id',(req,res)=>{
     try{
-        cart.deletecart(req,res)
+        cart.deleteCart(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,
@@ -52,7 +52,7 @@ cartRouter.delete('/delete/:id',(req,res)=>{
 })
 cartRouter.patch('/update/:id',bodyParser.json(),(req,res)=>{
     try{
-        cart.updatecart(req,res)
+        cart.updateCart(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,
