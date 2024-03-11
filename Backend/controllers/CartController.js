@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import { cart } from '../model/index.js'
+import { verifyToken } from '../middleware/Aunthentication.js'
 
 const cartRouter=express.Router()
 

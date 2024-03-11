@@ -1,6 +1,6 @@
 import { express, userRouter } from "./controllers/UserController.js";
 import { productRouter } from "./controllers/ProductController.js";
-import { cartRouter } from "./controllers/Cart.js";
+import { cartRouter } from "./controllers/CartController.js";
 import cookieParser from "cookie-parser";
 import { errorHandling } from "./middleware/ErrorHandling.js";
 import path from 'path'

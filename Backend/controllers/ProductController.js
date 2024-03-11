@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import { products } from '../model/index.js'
+import { verifyToken } from '../middleware/Aunthentication.js'
 
 const productRouter=express.Router()
 
@@ -27,7 +28,7 @@ productRouter.get('/:id',(req,res)=>{
     }
 
 })
-productRouter.post('/addProduct',bodyParser.json(),(req,res)=>{
+productRouter.post('/addProduct',verifyToken,bodyParser.json(),(req,res)=>{
     try{
         products.addProduct(req,res)
     }catch(e){

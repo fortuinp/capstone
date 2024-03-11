@@ -1,6 +1,7 @@
 import express from "express"
 import bodyParser from "body-parser";
 import { users } from "../model/index.js";
+import { verifyToken } from "../middleware/Aunthentication.js";
 
 
 const userRouter=express.Router()
@@ -37,7 +38,7 @@ userRouter.post('/register',bodyParser.json(),(req,res)=>{
         })
     }
 })
-userRouter.post('/login',bodyParser.json(),(req,res)=>{
+userRouter.post('/login',verifyToken,bodyParser.json(),(req,res)=>{
     try{
         users.login(req,res)
     }
@@ -75,5 +76,5 @@ userRouter.patch('/update/:id',bodyParser.json(),(req,res)=>{
 
 
 export{
-    userRouter,express
+    userRouter,express,
 }
