@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import sweet from "sweetalert";
-const lifeURL = "https://fitnessforall-eomp.onrender.com/";
+const lifeURL = "https://capstone-w5uv.onrender.com";
 
 export default createStore({
   state: {

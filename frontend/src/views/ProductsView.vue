@@ -43,7 +43,7 @@
   
   
   <script>
-  import Spinner from '@/components/Spinner.vue';
+  import Spinner from '../components/Spinner.vue';
   import Card from '../components/Card.vue';
   
   
@@ -80,7 +80,7 @@
       displayedProducts() {
         let items = [...this.products];
         if (this.sortedItems) {
-          items.sort((a, b) => a.prodAmount - b.prodAmount);
+          items.sort((a, b) => a.amount - b.amount);
         } else if (this.searchInput) {
           items = items.filter(product =>
             product.prodName.toLowerCase().includes(this.searchInput.toLowerCase())
@@ -95,7 +95,7 @@
     },
     methods: {
       Search() {
-        'Search input:', this.searchInput
+        this.searchInput
       },
       sortItems() {
         this.sortedItems = !this.sortedItems;

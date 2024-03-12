@@ -173,7 +173,7 @@
     },
     methods: {
       Search() {
-        'Search input:', this.searchInput
+         this.searchInput
       },
       deleteProd(prodID) {
         this.$store.dispatch('deleteProduct', prodID)

@@ -176,7 +176,7 @@
     },
     methods: {
       Search() {
-        'Search input:', this.searchInput
+        this.searchInput
       },
       deleteUser(userID) {
         this.$store.dispatch('deleteUser', userID)
