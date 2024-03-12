@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid bg-light text-center">
         <div class="row">
-            <p class="footer1 lead text-black    "> FitnessForAll &copy;
+            <p class="footer1 lead text-black    "> NatureNurtures &copy;
                 <span> {{ currYear }}</span>
             </p>
         </div>

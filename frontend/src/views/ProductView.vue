@@ -3,7 +3,7 @@
         <h1 class="text-danger "> {{ product.prodName }}</h1>
         <img :src="product.prodUrl" class="card-img-top  mx-auto mt-4 border border-3 border-black p-5  w-25 " alt="Pro">
         <h5 class="w-50 mx-auto m-3">{{ product.prodDescription }}</h5>
-        <h3>R{{ product.prodAmount }}</h3>
+        <h3>R{{ product.amount }}</h3>
         <router-link to="/products" class="nav-link link-light"> <a class="btn btn-light  bg-black text-white m-3 " href="#"
                 role="button">Go back</a></router-link>
     </div>

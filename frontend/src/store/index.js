@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import sweet from "sweetalert";
-const lifeURL = "https://capstone-w5uv.onrender.com";
+const lifeURL = "https://capstone-w5uv.onrender.com/";
 
 export default createStore({
   state: {
@@ -135,9 +135,9 @@ export default createStore({
     },
 
     
-    async addNewProduct(context, add) {
+    async addNewProduct(context, payload) {
       try {
-        let { msg } = await axios.post(`${lifeURL}products/addProduct`, add);
+        let { msg } = await axios.post(`${lifeURL}products/addProduct`, payload);
 
         context.dispatch("fetchProducts");
         sweet({
