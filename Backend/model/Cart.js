@@ -21,8 +21,8 @@ class Cart {
     SELECT cartID, Users.userID, Users.firstname,Products.prodID,Products.prodName,Products.prodCategory,Products.prodUrl, Cart.quantity, Products.amount*Cart.quantity as TotalAmount
     FROM Cart
     INNER JOIN Products ON Cart.prodID = Products.prodID
-    INNER JOIN Users ON Cart.userID = Users.userID;
-    WHERE cartID=${req.params.id}
+    INNER JOIN Users ON Cart.userID = Users.userID
+    WHERE cartID = ${req.params.id};
         `;
     db.query(qry, (err, result) => {
       if (err) throw err;
