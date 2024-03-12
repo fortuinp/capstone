@@ -3,7 +3,7 @@
         <div class="container-fluid justify-content-center">
 
             <a href="/">
-                <img src="" alt="Logo"
+                <img src="https://i.ibb.co/SQyXzw7/bearr.webp" alt="Logo"
                     class="w-25"> </a>
             <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
