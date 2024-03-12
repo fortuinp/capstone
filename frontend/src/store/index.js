@@ -245,9 +245,9 @@ export default createStore({
     },
 
 
-    async addProduct(context, payload) {
+    async addProduct(context, add) {
       try {
-        let { msg } = await axios.post(`${lifeURL}products/addProduct`, payload);
+        let { msg } = await axios.post(`${lifeURL}products/addProduct`, add);
         context.dispatch("fetchProducts");
         sweet({
           title: "User Added.",
@@ -305,9 +305,9 @@ export default createStore({
     async updateProduct(context, payload) {
       try {
         let { msg } = await (
-          await axios.patch(`${lifeURL}products/update/${payload.userID}`, payload)
+          await axios.patch(`${lifeURL}products/update/${payload.prodID}`,payload)
         ).data;
-
+     
         context.dispatch("fetchProducts");
         sweet({
           title: "Update user",
