@@ -158,6 +158,7 @@
           <td> {{ product.prodName }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.amount }}</td>
+          <!-- <td><img :src="product.prodUrl" class="" alt="Pro"></td> -->
          
  
           <td> <button class=" btn btn-dark" data-bs-toggle="modal" :data-bs-target="'#edit' + product.prodID"> Edit</button></td>

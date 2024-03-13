@@ -14,14 +14,14 @@
 }
 
 .footer1 {
-  font-family: "Passero One", sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
 }
 
 .navbar {
-  font-family: "Passero One", sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
@@ -37,7 +37,7 @@
 }
 .heading1 {
   padding-top: 567px;
-  font-family: "Passero One", sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
@@ -46,7 +46,7 @@
 
 .HomeBtn {
   padding-top: 600px;
-  font-family: "Passero One", sans-serif;
+  font-family:  sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: xx-large;
@@ -68,7 +68,7 @@
 }
 /* Sliding show */
 .slider {
-  font-family: "Passero One", sans-serif;
+  font-family:  sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
@@ -109,7 +109,7 @@
 }
 
 .paragraphs {
-  font-family: "Kenia", sans-serif;
+  font-family:  sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: xx-large;
@@ -122,7 +122,7 @@
 
 /* Products COntent */
 .prodBtn {
-  font-family: "Passero One", sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
@@ -135,7 +135,7 @@
 }
 
 .ProdCar {
-  font-family: "Passero One", sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
@@ -146,19 +146,19 @@
 
 /* Product COntent */
 .ProdCont {
-  font-family: "Passero One", sans-serif;
+  font-family:  sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
 }
 
-.card-img-top {
-  aspect-ratio: 1/1;
-}
+/* .card-img-top {
+
+} */
 
 /* Admin Content */
 .AdiCont {
-  font-family: "Passero One", sans-serif;
+  font-family:  sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: xx-large;

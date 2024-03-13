@@ -1,5 +1,119 @@
 <template>
-    <div class="about">
-      <h1>contact</h1>
+  <main class="container-fluid vh-100" id="contact">
+
+<section class=" container mb-4" >
+
+<h2 class="h1-responsive font-weight-bold mb-4 my-4 text-centre mx-auto animate__animated animate__flip " >Reach me</h2>
+
+<div class="row">
+<div class="col-7-md-9 mb-md-0 mb-5">
+
+  <form action="https://formspree.io/f/xyyqlwyy" id="contact-form" name="contact-form" 
+        method="POST">
+
+    <div class="row mb-4">
+      <div class="col-md-6 mb-2">
+        <div class="md-form mb-0">
+          <input type="text" id="name" name="name" class="form-control">
+          <label for="name" class="">Your name</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="md-form mb-0">
+          <input type="text" id="email" name="email" class="form-control">
+          <label for="email" class="">Your email</label>
+        </div>
+      </div>
+
+
     </div>
-  </template>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="md-form mb-0">
+          <input type="text" id="subject" name="subject" class="form-control">
+          <label for="subject" class="">Subject</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <div class="md-form">
+          <textarea type="text" id="message" name="message" rows="2"
+            class="form-control md-textarea"></textarea>
+          <label for="message">Your message</label>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+
+  <div class="text-center text-md-left mt-4">
+    <a id="btncontact" class="btn btn-secondary"
+      onclick="document.getElementById('contact-form').submit();">Send</a>
+  </div>
+  <div class="status"></div>
+</div>
+
+<div class="col-5-md-3 text-center mt-4" id="text">
+  <ul class="list-unstyled mb-0">
+    <li><i class="fas fa-map-marker-alt fa-2x"></i>
+      <p>7 Dorr Street, Cape Town, SA</p>
+    </li>
+
+    <li><i class="fas fa-phone mt-4 fa-2x"></i>
+      <p>021 361 3404</p>
+    </li>
+
+    <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+      <p>fortuinpinda@gmail.com</p>
+    </li>
+   
+   
+      
+      <a target="_blank" href="https://www.linkedin.com/in/pinda-fortuin-0a4043180/"><i id="icon"
+          class="bi bi-linkedin mx-2" ></i></a>
+
+      <a target="_blank" href="https://github.com/fortuinp"><i id="icon" class="bi bi-github mx-2"></i></a>
+ 
+
+  </ul>
+</div>
+
+
+</div>
+
+</section>
+</main>
+
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<style scoped>
+#text{
+color: #b6b6b6;
+}
+#contact{
+color: #A5856C;
+font-weight: bolder;
+font-size: large;
+}
+label{
+color:#A5856C ;
+}
+#icon{
+font-size: 1.5rem;
+ color: #b6b6b6;
+/* color: #692525; */
+}
+</style>

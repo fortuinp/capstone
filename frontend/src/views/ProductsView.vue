@@ -23,6 +23,9 @@
               <h4 class="card-text text-dark mt-3 ">
                 {{ product.prodName }}
               </h4>
+              <h5 class="card-text text-dark mt-3 ">
+                {{ product.prodCategory }}
+              </h5>
               <h5 class="card-text text-dark ">
                 R{{ product.amount }}
               </h5>
