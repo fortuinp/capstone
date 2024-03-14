@@ -32,7 +32,9 @@ export default createStore({
     setCart(state, value) {
       state.cart = value;
     },
-  },
+    setMessage(state, value) {
+      state.message = value;
+    }},
   actions: {
     async register(context, payload) {
       try {
@@ -134,7 +136,19 @@ export default createStore({
       }
     },
 
-    
+    async login(context, payload) {
+      const res = await axios.post(`${lifeURL}login`, payload);
+      const { result, msg, err } = await res.data;
+      if (result) {
+        context.commit("setMessage", msg);
+        context.commit("setUser", result);
+        localStorage.setItem("loggedUser", JSON.stringify(result));
+        console.log(result, msg);
+      } else {
+        context.commit("setMesage", err);
+        console.log(err);
+      }
+    },
 
 
     

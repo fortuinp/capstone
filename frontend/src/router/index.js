@@ -47,6 +47,16 @@ const routes = [
     path: "/cart/:id",
     name: "cart",
     component: () => import("../views/ProductView.vue"),
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("../views/SignUp.vue"),
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../views/LoginView.vue"),
   }
 ];
 

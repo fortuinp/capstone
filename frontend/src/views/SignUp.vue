@@ -1,5 +1,227 @@
 <template>
-    <div class="about">
-      <h1>sign up</h1>
-    </div>
-  </template>
+  <div class="signup">
+        <div class="container">
+          <h1>Sign Up</h1>
+          <div class="row">
+            <div class="col-sm-8">
+              <form @submit.prevent="signup">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >FirstName</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                   
+                    placeholder="FirstName"
+                    name="FirstName"
+                    v-model="firstName"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >LastName</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                   
+                    placeholder="LastName"
+                    name="LastName"
+                    required
+                    v-model="lastName"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >age</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    
+                    placeholder="Age"
+                    name="Age"
+                    required
+                    v-model="userAge"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Gender</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    
+                    placeholder="Gender"
+                    name="gender"
+                    required
+                    v-model="gender"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Email Address</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    
+                    placeholder="Email Address"
+                    name="Email"
+                    required
+                    v-model="emailAdd"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >User Role</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    
+                    placeholder="role"
+                    name="UserRole"
+                    required
+                    v-model="userRole"
+                  />
+                </div>
+                <!-- <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                  
+                      placeholder="+27 833 449 1237"
+                      name="number"
+                      maxlength="12"
+                      required
+                      v-model="phoneNumber"
+                    />
+                  </div> -->
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                     
+                      placeholder=""
+                      name="password"
+                      required
+                      v-model="userPass"
+                    />
+                  </div>
+                  <!-- <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Confirm Password</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                    
+                      placeholder=""
+                      name="password1"
+                      v-model="confirmPass"
+                    />
+                  </div> -->
+                
+    
+                <div class="col-auto">
+                  
+                    <button
+                    type="submit"
+                    class="btnSignUp"
+      
+                  >
+                    Sign Up
+                  </button>
+               
+                </div>
+              </form>
+            </div>
+            <div class="col-sm-4">
+            <img src="https://i.postimg.cc/5ycXRtfC/basket-removebg-preview.png" alt="contact" class="img-fluid" >
+
+
+              </div>
+
+            
+          </div>
+            
+
+
+        </div>
+
+          
+  </div>
+        
+</template>
+<style scoped>
+.signup .btnSignUp {
+  border: 1px solid transparent;
+  background-color:  #7cbd1e;
+  border-radius: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color:black;
+}
+.signup .btnSignUp:hover{
+  background-color:  #bceb3c;
+}
+
+
+.signup h1{
+  text-align: center;
+}
+
+</style>
+
+<script>
+export default{
+data(){
+  return {
+    firstName: '',
+    lastName: '',
+    emailAdd:'',
+    userPass:'',
+    userAge:'',
+    userRole:'',
+    gender:''
+    // confirmPass:''
+  }
+  },
+  computed:{
+    message(){
+      return this.$store.state.message
+
+    }
+  },
+methods:{
+  signup(){
+    this.$store.dispatch('register',{
+      firstName: this.firstName,
+      lastName: this.lastName,
+      emailAdd: this.emailAdd,
+      userPass: this.userPass,
+      gender: this.gender,
+      userAge:this.userAge,
+      userRole:this.userRole
+
+    })
+  }
+}
+
+}
+
+
+</script>
