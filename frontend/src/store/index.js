@@ -137,7 +137,7 @@ export default createStore({
     },
 
     async login(context, payload) {
-      const res = await axios.post(`${lifeURL}/users/login`, payload);
+      const res = await axios.post(`${lifeURL}users/login`, payload);
       const { result, msg, err } = await res.data;
       if (result) {
         context.commit("setMessage", msg);
@@ -145,7 +145,7 @@ export default createStore({
         localStorage.setItem("loggedUser", JSON.stringify(result));
         console.log(result, msg);
       } else {
-        context.commit("setMesage", err);
+        context.commit("setMessage", msg);
         console.log(err);
       }
     },
