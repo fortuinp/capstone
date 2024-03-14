@@ -38,7 +38,7 @@ userRouter.post('/register',bodyParser.json(),(req,res)=>{
         })
     }
 })
-userRouter.post('/login',verifyToken,bodyParser.json(),(req,res)=>{
+userRouter.post('/login',bodyParser.json(),(req,res)=>{
     try{
         users.login(req,res)
     }
