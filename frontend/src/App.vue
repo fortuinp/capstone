@@ -17,6 +17,11 @@ export default {
   components: {
     NavBar, Footer
 
+  },
+  computed: {
+    loggedUser(){
+        return JSON.parse(localStorage.getItem("loggedUser"));
+      }
   }
 }
 </script>

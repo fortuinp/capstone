@@ -137,7 +137,7 @@ export default createStore({
     },
 
     async login(context, payload) {
-      const res = await axios.post(`${lifeURL}login`, payload);
+      const res = await axios.post(`${lifeURL}/users/login`, payload);
       const { result, msg, err } = await res.data;
       if (result) {
         context.commit("setMessage", msg);

@@ -19,7 +19,7 @@
                         <router-link to="/about" class="nav-link ">About </router-link>
                     </li>
                     <li class="nav-item">
-            <a class="nav-link" aria-current="page" v-if="user" href="/products">Shop</a>
+            <a class="nav-link" aria-current="page" href="/products">Shop</a>
           </li>
                     <li class="nav-item">
                         <router-link to="/admin" class="nav-link">Admin </router-link>
