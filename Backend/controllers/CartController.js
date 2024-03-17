@@ -8,7 +8,7 @@ const cartRouter=express.Router()
 //fetch all products
 cartRouter.get('/users/:id/carts',(req,res)=>{
     try{
-        cart.fetchCarts(req,res)
+        cart.fetchCart(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,

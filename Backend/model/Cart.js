@@ -1,6 +1,6 @@
 import { dbconnection as db } from "../config/index.js";
 class Cart {
-  fetchCarts(req, res) {
+  fetchCart(req, res) {
     const qry = `
     SELECT cartID, Users.userID, Users.firstname,Products.prodID,Products.prodName,Products.prodCategory,Products.prodUrl, Cart.quantity, Products.amount*Cart.quantity as TotalAmount
     FROM Cart
