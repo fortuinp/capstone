@@ -4,17 +4,17 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Product</th>
             <th>Product Name</th>
             <th>Qty</th>
-            <th>Price</th>
             <th>Total</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in cart" :key="item.cartId">
-            <td><img :src="item.prodUrl" alt="item image" class="image" /></td>
+          <tr v-for="item in cart" :key="item.cartID">
             <td>{{ item.prodName }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.TotalAmount }}</td>
             <td>
               <form class="form-inline">
                 <input
@@ -26,20 +26,13 @@
                   <i class="fa fa-pencil"></i>
                 </button>
                 <button
-                  @click.prevent="deleteCartItem(item?.cartId)"
+                  @click.prevent="deleteCartItem(item?.cartID)"
                   class="btnDelete"
                 >
                   <i class="fa fa-trash-o"></i>
                 </button>
               </form>
             </td>
-            <td>{{ item.amount }}</td>
-            <td>{{ item.totalAmount }}</td>
-          </tr>
-          <br />
-          <tr>
-            <td colspan="4" class="text-right"><strong>Total</strong></td>
-            <td id="sum"></td>
           </tr>
         </tbody>
       </table>
@@ -51,7 +44,7 @@
     <a href="/products" class="btnShop">Continue Shopping</a>
 
     <!-- Button trigger modal -->
-<button type="button" @click.prevent="deleteCart(loggedUser?.userId)" class="btnCheckoutCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" @click.prevent="deleteCart(loggedUser?.userID)" class="btnCheckoutCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Checkout Cart
 </button>
 
@@ -64,7 +57,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-        <img src="https://i.postimg.cc/Vkf1VPP2/success-removebg-preview.png" alt="success" width="50" height="50"><br>
+        <!-- <img src="https://i.postimg.cc/Vkf1VPP2/success-removebg-preview.png" alt="success" width="50" height="50"><br> -->
         We'll send you payment information and delivery arrangement via email
       </div>
       <div class="modal-footer">
@@ -122,12 +115,9 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("fetchCart", this.loggedUser.userId);
+    this.$store.dispatch("fetchCart", this.loggedUser.userID);
   },
-  totalSum() {
-    let sum = eval(this.cart.total.replace(/\s/g, "")).toFixed(2);
-    return sum;
-  },
+  
   
   methods: {
     deleteCartItem(id) {
@@ -135,7 +125,7 @@ export default {
       console.log(id)
     },
     deleteCart() {
-      this.$store.dispatch("deleteCart", this.loggedUser.userId);
+      this.$store.dispatch("deleteCart", this.loggedUser.userID);
       
     },
   },

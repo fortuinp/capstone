@@ -10,7 +10,7 @@ export default createStore({
     products: null,
     product: null,
     cart:null,
-    carts:null
+    
   },
   getters: {},
   mutations: {
@@ -26,9 +26,7 @@ export default createStore({
     setProduct(state, value) {
       state.product = value;
     },
-    setCarts(state, value) {
-      state.carts = value;
-    },
+   
     setCart(state, value) {
       state.cart = value;
     },
@@ -152,11 +150,12 @@ export default createStore({
 
 
     
-    async addCart(context, add) {
+    async addCart(context, payload) {
+      console.log(payload);
       try {
-        let { msg } = await axios.post(`${lifeURL}cart/addCart`, add);
+        let { msg } = await axios.post(`${lifeURL}users/${payload.userID}/cart`, payload);
 
-        context.dispatch("fetchCarts");
+        context.dispatch("fetchCart");
         sweet({
           title: "Adding Cart",
           text: msg,
@@ -172,11 +171,12 @@ export default createStore({
         });
       }
     },
-    async fetchCarts(context) {
+     async fetchCart(context,id) {
       try {
-        let { results } = (await axios.get(`${lifeURL}cart`)).data;
+        let { results } = (await axios.get(`${lifeURL}users/${id}/carts`)).data;
+        console.log(id);
         if (results) {
-          context.commit("setCarts", results);
+          context.commit("setCart", results);
         }
       } catch (e) {
         sweet({
@@ -187,39 +187,16 @@ export default createStore({
         });
       }
     },
-    async fetchCart(context, payload) {
-      try {
-        let { result } = (await axios.get(`${lifeURL}cart/${payload.id}`))
-          .data;
-        if (result) {
-          context.commit("setCart", result);
-        } else {
-          sweet({
-            title: "Retrieving a single cart",
-            text: "Cart was not found",
-            icon: "info",
-            timer: 2000,
-          });
-        }
-      } catch (e) {
-        console.log(e.message);
-        sweet({
-          title: "Error",
-          text: "Cart was not found.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
-    async updateCart(context, payload) {
+    
+    async updateCart(context, id) {
       try {
         let { msg } = await (
           await axios.patch(
-            `${lifeURL}cart/update/${payload.cartID}`,
-            payload
+            `${lifeURL}/users/${id}/cart/${id}`,
+           
           )
         ).data;
-        context.dispatch("fetchCarts");
+        context.dispatch("fetchCart");
         sweet({
           title: "Update cart",
           text: msg,
@@ -235,13 +212,13 @@ export default createStore({
         });
       }
     },
-    async deleteCart(context, payload) {
+    async deleteCart(context, id) {
       try {
         let { msg } = await axios.delete(
-          `${lifeURL}cart/delete/${payload}`
+          `${lifeURL}users/${id}/cart`
         );
 
-        context.dispatch("fetchCarts");
+        context.dispatch("fetchCart");
         sweet({
           title: "Delete cart",
           text: msg,
@@ -257,6 +234,32 @@ export default createStore({
         });
       }
     },
+    async deleteCartItem(context, id) {
+      try {
+        let { msg } = await axios.delete(
+          `${lifeURL}users/${id}/cart/${id}`
+        );
+
+        context.dispatch("fetchCart");
+        sweet({
+          title: "Delete cart",
+          text: msg,
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when deleting cart.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+
+
+
+
 
 
     async addProduct(context, add) {
