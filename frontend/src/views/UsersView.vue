@@ -42,6 +42,8 @@
                 <input v-model="payload.gender" type="text" placeholder="Gender" class="form-control">
                 <h5 class="text-start mt-2">User Age: </h5>
                 <input v-model="payload.userAge" type="number" placeholder="Age" class="form-control">
+                <h5 class="text-start mt-2">User Role: </h5>
+                <input v-model="payload.userRole" type="text" placeholder="Role" class="form-control">
                 <h5 class="text-start mt-2">User Email Address: </h5>
                 <input v-model="payload.emailAdd" type="text" placeholder="Email Address" class="form-control">
                 <h5 class="text-start mt-2">User Password: </h5>
@@ -71,6 +73,8 @@
                 <input v-model="payload.gender" type="text" :placeholder="user.gender" class="form-control">
                 <h5 class="text-start mt-2">User Age: </h5>
                 <input v-model="payload.userAge" type="text" :placeholder="user.userAge" class="form-control">
+                <h5 class="text-start mt-2">User Role: </h5>
+                <input v-model="payload.userRole" type="text" :placeholder="user.userRole" class="form-control">
                 <h5 class="text-start mt-2">User Email Address: </h5>
                 <input v-model="payload.emailAdd" type="text" :placeholder="user.emailAdd" class="form-control">
                 <h5 class="text-start mt-2">User Password: </h5>
@@ -153,6 +157,7 @@
           "gender": null,
           "emailAdd": null,
           "userPass": null,
+          "userRole":null
         }
   
       }

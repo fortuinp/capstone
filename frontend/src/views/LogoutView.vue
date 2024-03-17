@@ -15,7 +15,27 @@
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      user: null,
+    };
+  },
+  computed: {
+    loggedUser() {
+      return this.$store.state.user;
+    },
+  },
+  mounted() {
+    this.user =
+      this.loggedUser || JSON.parse(localStorage.getItem("loggedUser"));
+  },
+  methods:{
+    logOut(){
+      this.user = null || JSON.parse(localStorage.removeItem("loggedUser"))
+    }
+  }
+};
 </script>
 
 <style scoped>

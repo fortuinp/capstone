@@ -39,14 +39,14 @@ const routes = [
     component: () => import("../views/UsersView.vue"),
   },
   {
-    path: "/cart",
+    path: "/carts",
     name: "carts",
-    component: () => import("../views/ProductsView.vue"),
+    component: () => import("../views/CartsView.vue"),
   },
   {
     path: "/cart/:id",
     name: "cart",
-    component: () => import("../views/ProductView.vue"),
+    component: () => import("../views/CartView.vue"),
   },
   {
     path: "/register",
@@ -60,8 +60,13 @@ const routes = [
   },
   {
     path: "/logout",
-    name: "login",
+    name: "logout",
     component: () => import("../views/LogoutView.vue"),
+  },
+  {
+    path: "/profile",
+    name: "userprofile",
+    component: () => import("../views/ProfileView.vue"),
   }
 ];
 

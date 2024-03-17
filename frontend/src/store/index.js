@@ -264,7 +264,7 @@ export default createStore({
         let { msg } = await axios.post(`${lifeURL}products/addProduct`, add);
         context.dispatch("fetchProducts");
         sweet({
-          title: "User Added.",
+          title: "Product Added.",
           text: msg,
           icon: "success",
           timer: 2000,
@@ -287,7 +287,7 @@ export default createStore({
       } catch (e) {
         sweet({
           title: "Error",
-          text: "An error occurred when retrieving users.",
+          text: "An error occurred when retrieving products.",
           icon: "error",
           timer: 2000,
         });
@@ -301,8 +301,8 @@ export default createStore({
           context.commit("setProduct", result);
         } else {
           sweet({
-            title: "Retrieving a single user",
-            text: "User was not found",
+            title: "Retrieving a single product",
+            text: "Product was not found",
             icon: "info",
             timer: 2000,
           });
@@ -310,7 +310,7 @@ export default createStore({
       } catch (e) {
         sweet({
           title: "Error",
-          text: "A user was not found.",
+          text: "Product was not found.",
           icon: "error",
           timer: 2000,
         });
@@ -332,7 +332,7 @@ export default createStore({
       } catch (e) {
         sweet({
           title: "Error",
-          text: "An error occurred when updating a user.",
+          text: "An error occurred when updating the product.",
           icon: "error",
           timer: 2000,
         });
@@ -344,7 +344,7 @@ export default createStore({
 
         context.dispatch("fetchProducts");
         sweet({
-          title: "Delete user",
+          title: "Deleted product",
           text: msg,
           icon: "success",
           timer: 2000,
@@ -352,7 +352,7 @@ export default createStore({
       } catch (e) {
         sweet({
           title: "Error",
-          text: "An error occurred when deleting a user.",
+          text: "An error occurred when deleting the product.",
           icon: "error",
           timer: 2000,
         });

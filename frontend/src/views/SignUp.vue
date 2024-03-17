@@ -86,24 +86,10 @@
                     placeholder="role"
                     name="UserRole"
                     required
-                    v-model="userRole"
+                    v-model="user"
                   />
                 </div>
-                <!-- <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"
-                      >Phone Number</label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                  
-                      placeholder="+27 833 449 1237"
-                      name="number"
-                      maxlength="12"
-                      required
-                      v-model="phoneNumber"
-                    />
-                  </div> -->
+                
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"
                       >Password</label
@@ -118,19 +104,7 @@
                       v-model="userPass"
                     />
                   </div>
-                  <!-- <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"
-                      >Confirm Password</label
-                    >
-                    <input
-                      type="password"
-                      class="form-control"
-                    
-                      placeholder=""
-                      name="password1"
-                      v-model="confirmPass"
-                    />
-                  </div> -->
+                 
                 
     
                 <div class="col-auto">
@@ -197,7 +171,7 @@ data(){
     userAge:'',
     userRole:'',
     gender:''
-    // confirmPass:''
+  
   }
   },
   computed:{
