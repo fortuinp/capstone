@@ -6,7 +6,7 @@ import { verifyToken } from '../middleware/Aunthentication.js'
 const cartRouter=express.Router()
 
 //fetch all products
-cartRouter.get('/',(req,res)=>{
+cartRouter.get('/users/:id/carts',(req,res)=>{
     try{
         cart.fetchCarts(req,res)
     }catch(e){
@@ -17,18 +17,8 @@ cartRouter.get('/',(req,res)=>{
     }
 
 })
-cartRouter.get('/:id',(req,res)=>{
-    try{
-        cart.fetchCart(req,res)
-    }catch(e){
-        res.json({
-            status:res.statusCode,
-            msg:'failed to retrieve a cart'
-        })
-    }
 
-})
-cartRouter.post('/addcart',bodyParser.json(),(req,res)=>{
+cartRouter.post('/users/:id/cart',bodyParser.json(),(req,res)=>{
     try{
         cart.addCart(req,res)
     }catch(e){
@@ -39,21 +29,33 @@ cartRouter.post('/addcart',bodyParser.json(),(req,res)=>{
     }
 })
 
-cartRouter.delete('/delete/:id',(req,res)=>{
+cartRouter.delete('/users/:id/cart',(req,res)=>{
     try{
         cart.deleteCart(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,
-            msg:'failed to delete new cart'
+            msg:'failed to delete cart'
         })
     }
 
 
 })
-cartRouter.patch('/update/:id',bodyParser.json(),(req,res)=>{
+cartRouter.delete('/users/:id/cart/:id',(req,res)=>{
     try{
-        cart.updateCart(req,res)
+        cart.deleteCartItem(req,res)
+    }catch(e){
+        res.json({
+            status:res.statusCode,
+            msg:'failed to delete cart item'
+        })
+    }
+
+
+})
+cartRouter.patch('/users/:id/cart/:id',bodyParser.json(),(req,res)=>{
+    try{
+        cart.updateCartItem(req,res)
     }catch(e){
         res.json({
             status:res.statusCode,
