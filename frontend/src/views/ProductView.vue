@@ -45,7 +45,7 @@ export default {
     methods: {
         addToCart(product) {
             const payload = {
-                // product,
+             
                 userID: this.loggedUser?.UserID,
                 prodID: product.prodID, 
                 quantity: parseInt(this.quantity) || 1

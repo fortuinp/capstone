@@ -11,9 +11,9 @@
         </thead>
         <tbody>
           <tr v-for="item in cart" :key="item.cartID">
-            <td>{{ loggedUser?.item.prodName }}</td>
-            <td>{{loggedUser?.item.quantity}}</td>
-            <td>{{ loggedUser?.item.TotalAmount }}</td>
+            <td>{{ item.prodName }}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{ item.TotalAmount }}</td>
           
           </tr>
         </tbody>
@@ -24,7 +24,8 @@
 
   <div class="d-flex justify-content-between">
     <router-link to="/products" class="btn btn-primary">Continue Shopping</router-link>
-    <button type="button" @click="checkoutCart" class="btn btn-success">Checkout Cart</button>
+    <button type="button" @click.prevent="checkoutCart" class="btn btn-success">Checkout Cart</button>
+    <button type="button" @click.prevent="fetchCart" class="btn btn-success">show Cart</button>
   </div>
 
   <!-- Modal -->
@@ -48,6 +49,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   computed: {
@@ -59,21 +62,25 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("fetchCart", this.loggedUser.userID);
+    // Fetch cart data when the component is created
+    this.fetchCart();
   },
   methods: {
-    deleteCartItem(id) {
-      this.$store.dispatch("deleteCartItem", id);
+    // Other methods
+    fetchCart() {
+      // Call the Vuex action to fetch cart data
+      this.$store.dispatch("fetchCart", this.loggedUser.UserID)
+        .then(() => {
+          // Cart data fetched successfully
+          console.log("Cart fetched successfully:", this.cart);
+        })
+        .catch(error => {
+          // Handle error
+          console.error("Error fetching cart:", error);
+        });
     },
-    updateCartItem(item) {
-      this.$store.dispatch("updateCartItem", item);
-    },
-    checkoutCart() {
-      // Implement the checkout logic here
-      // You may want to show a confirmation dialog before proceeding
-      this.$store.dispatch("deleteCart", this.loggedUser.userID);
-      ('#exampleModal').modal('show'); // Show the success modal
-    },
+    // Other methods
   },
 };
 </script>
+
