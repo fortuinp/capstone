@@ -33,7 +33,9 @@ export default {
   methods:{
     logOut(){
       this.user = null || JSON.parse(localStorage.removeItem("loggedUser"))
+      location.reload
     }
+  
   }
 };
 </script>

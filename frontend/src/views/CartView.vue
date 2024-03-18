@@ -13,7 +13,7 @@
         <tbody>
           <tr v-for="item in cart" :key="item.cartID">
             <td>{{ item.prodName }}</td>
-            <td>{{ item.amount }}</td>
+            <td>{{ item.amount}}</td>
             <td>{{item.quantity}}</td>
             <td>{{ item.TotalAmount }}</td>
           
@@ -27,7 +27,7 @@
   <div class="d-flex justify-content-between">
     <router-link to="/products" class="btn btn-primary">Continue Shopping</router-link>
     <button type="button" @click.prevent="checkoutCart" class="btn btn-success">Checkout Cart</button>
-    <button type="button" @click.prevent="fetchCart" class="btn btn-success">show Cart</button>
+
   </div>
 
   <!-- Modal -->

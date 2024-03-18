@@ -92,10 +92,11 @@ export default createStore({
         });
       }
     },
-    async updateUser(context, payload) {
+    async updateUser(context, id ){
       try {
+        
         let { msg } = await (
-          await axios.patch(`${lifeURL}users/update/${payload.userID}`, payload)
+          await axios.patch(`${lifeURL}users/update/${id}`)
         ).data;
 
         context.dispatch("fetchUsers");

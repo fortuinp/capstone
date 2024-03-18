@@ -34,6 +34,7 @@
               </div>
               <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Login</button>
+                
               </div>
             </form>
             <p class="newAccount">Don't have an account? <a href="/register">Register here</a></p>
@@ -63,11 +64,12 @@ export default {
     signIn() {
       this.$store.dispatch("login", this.payload)
         .then(() => {
-          // Redirect to home page after successful login
-          this.$router.push('/home');
+         
+         location.reload;
+          
         })
         .catch(error => {
-          // Handle login error, if any
+        
           console.error('Login failed:', error);
         });
     },
