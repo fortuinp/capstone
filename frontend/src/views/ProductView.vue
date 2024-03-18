@@ -10,7 +10,7 @@
         </router-link>
 
         <div>
-            <button @click="addToCart(product)">Add to Cart</button>
+            <button @click.prevent="addToCart(product)">Add to Cart</button>
             <input type="number" id="quantity" v-model="quantity" placeholder="1">
         </div>
     </div>
@@ -45,14 +45,13 @@ export default {
     methods: {
         addToCart(product) {
             const payload = {
-                product,
-                quantity: parseInt(this.quantity) || 1, 
+                // product,
                 userID: this.loggedUser?.UserID,
-               
-                prodID: product.prodID 
-                
+                prodID: product.prodID, 
+                quantity: parseInt(this.quantity) || 1
             };
             console.log(this.loggedUser.UserID);
+            // console.log(this.addToCart(payload));
             this.$store.dispatch('addCart', payload);
         }
     }

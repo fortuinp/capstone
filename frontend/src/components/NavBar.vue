@@ -59,6 +59,11 @@
       loggedUser() {
         return this.$store.state.user;
       },
+      userrID(){
+        let userId  = localStorage.getItem("loggedUser")
+        console.log(userId.UserID);
+        return userId.UserID
+      }
     },
     mounted() {
       this.user = this.loggedUser || JSON.parse(localStorage.getItem("loggedUser"));

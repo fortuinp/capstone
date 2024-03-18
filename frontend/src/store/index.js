@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import sweet from "sweetalert";
+//import { useCookies } from "vue3-cookies";
 const lifeURL = "https://capstone-w5uv.onrender.com/";
 
 export default createStore({
@@ -366,7 +367,8 @@ export default createStore({
   
     async addCart(context, payload) {
       try {
-        await axios.post(`${lifeURL}cart/users/${payload.id}/cart`, payload);
+        console.log(payload.userID);
+        (await axios.post(`${lifeURL}cart/users/${payload.userID}/cart`, payload)).data;
         context.dispatch("fetchCart", payload);
         sweet({
           title: "Adding Cart",
