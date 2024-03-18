@@ -35,9 +35,9 @@ export default {
         product() {
             return this.$store.state.product;
         },
-        loggedUser() {
-            return this.$store.state.loggedUser;
-        }
+        loggedUser(){
+      return JSON.parse(localStorage.getItem("loggedUser"));
+    }
     },
     mounted() {
         this.$store.dispatch('fetchProduct', this.$route.params);
@@ -47,9 +47,12 @@ export default {
             const payload = {
                 product,
                 quantity: parseInt(this.quantity) || 1, // Use the quantity from the input field or default to 1
-                userID: this.loggedUser ? this.loggedUser.userID : null, // Check if loggedUser exists
+                userID: this.loggedUser?.userID,// Check if loggedUser exists
+               
                 prodID: product.prodID // Assuming prodID is a property of the product
+                
             };
+            console.log(this.loggedUser);
             this.$store.dispatch('addCart', payload);
         }
     }

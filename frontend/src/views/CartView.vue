@@ -7,32 +7,14 @@
             <th>Product Name</th>
             <th>Qty</th>
             <th>Total</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in cart" :key="item.cartID">
-            <td>{{ item.prodName }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.TotalAmount }}</td>
-            <td>
-              <form class="form-inline">
-                <input
-                  class="form-control"
-                  type="text"
-                  :value="item.quantity"
-                />
-                <button rel="tooltip" class="btn btn-default">
-                  <i class="fa fa-pencil"></i>
-                </button>
-                <button
-                  @click.prevent="deleteCartItem(item?.cartID)"
-                  class="btnDelete"
-                >
-                  <i class="fa fa-trash-o"></i>
-                </button>
-              </form>
-            </td>
+            <td>{{ loggedUser?.item.prodName }}</td>
+            <td>{{loggedUser?.item.quantity}}</td>
+            <td>{{ loggedUser?.item.TotalAmount }}</td>
+          
           </tr>
         </tbody>
       </table>
@@ -41,68 +23,30 @@
   <br />
 
   <div class="d-flex justify-content-between">
-    <a href="/products" class="btnShop">Continue Shopping</a>
+    <router-link to="/products" class="btn btn-primary">Continue Shopping</router-link>
+    <button type="button" @click="checkoutCart" class="btn btn-success">Checkout Cart</button>
+  </div>
 
-    <!-- Button trigger modal -->
-<button type="button" @click.prevent="deleteCart(loggedUser?.userID)" class="btnCheckoutCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Checkout Cart
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header ">
-        <h5 class="modal-title fw-bold" id="exampleModalLabel">Thank you for shopping with us</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <!-- <img src="https://i.postimg.cc/Vkf1VPP2/success-removebg-preview.png" alt="success" width="50" height="50"><br> -->
-        We'll send you payment information and delivery arrangement via email
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-       
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="exampleModalLabel">Thank you for shopping with us</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="https://i.postimg.cc/Vkf1VPP2/success-removebg-preview.png" alt="success" width="50" height="50">
+          <br>
+          We'll send you payment information and delivery arrangement via email
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-  </div>
 </template>
-
-<style>
-.image {
-  width: 10rem;
-}
-
-.btnShop,
-.btnCheckoutCart {
-  border: 1px solid transparent;
-  background-color: #7cbd1e;
-  border-radius: 1rem;
-  justify-content: space-between;
-  text-decoration: none;
-  padding: 1rem;
-
-  color: black;
-}
-
-.btnShop:hover {
-  background-color: #bceb3c;
-}
-.btnCheckoutCart:hover {
-  background-color: #bceb3c;
-}
-.btnDelete {
-  border: none;
-  color: #7cbd1e;
-  background-color: transparent;
-}
-.btnDelete:hover {
-  color: black;
-}
-</style>
 
 <script>
 export default {
@@ -117,16 +61,18 @@ export default {
   created() {
     this.$store.dispatch("fetchCart", this.loggedUser.userID);
   },
-  
-  
   methods: {
     deleteCartItem(id) {
-      this.$store.dispatch("deleteCartItem",id);
-      console.log(id)
+      this.$store.dispatch("deleteCartItem", id);
     },
-    deleteCart() {
+    updateCartItem(item) {
+      this.$store.dispatch("updateCartItem", item);
+    },
+    checkoutCart() {
+      // Implement the checkout logic here
+      // You may want to show a confirmation dialog before proceeding
       this.$store.dispatch("deleteCart", this.loggedUser.userID);
-      
+      ('#exampleModal').modal('show'); // Show the success modal
     },
   },
 };

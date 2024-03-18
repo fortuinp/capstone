@@ -150,112 +150,112 @@ export default createStore({
 
 
     
-    async addCart(context, payload) {
-      console.log(payload);
-      try {
-        let { msg } = await axios.post(`${lifeURL}users/${payload.userID}/cart`, payload);
+    // async addCart(context, payload) {
+    //   console.log(payload);
+    //   try {
+    //     let { msg } = await axios.post(`${lifeURL}cart/users/${payload}/cart`);
 
-        context.dispatch("fetchCart");
-        sweet({
-          title: "Adding Cart",
-          text: msg,
-          icon: "success",
-          timer: 2000,
-        });
-      } catch (e) {
-        sweet({
-          title: "Error",
-          text: "An error occurred when adding to cart.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
-     async fetchCart(context,id) {
-      try {
-        let { results } = (await axios.get(`${lifeURL}users/${id}/carts`)).data;
-        console.log(id);
-        if (results) {
-          context.commit("setCart", results);
-        }
-      } catch (e) {
-        sweet({
-          title: "Error",
-          text: "An error occurred when retrieving carts.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
+    //     context.dispatch("fetchCart");
+    //     sweet({
+    //       title: "Adding Cart",
+    //       text: msg,
+    //       icon: "success",
+    //       timer: 2000,
+    //     });
+    //   } catch (e) {
+    //     sweet({
+    //       title: "Error",
+    //       text: "An error occurred when adding to cart.",
+    //       icon: "error",
+    //       timer: 2000,
+    //     });
+    //   }
+    // },
+    //  async fetchCart(context,payload) {
+    //   try {
+    //     let { results } = (await axios.get(`${lifeURL}cart/users/${payload}/carts`)).data;
+    //     console.log(payload);
+    //     if (results) {
+    //       context.commit("setCart", results);
+    //     }
+    //   } catch (e) {
+    //     sweet({
+    //       title: "Error",
+    //       text: "An error occurred when retrieving carts.",
+    //       icon: "error",
+    //       timer: 2000,
+    //     });
+    //   }
+    // },
     
-    async updateCart(context, id) {
-      try {
-        let { msg } = await (
-          await axios.patch(
-            `${lifeURL}/users/${id}/cart/${id}`,
+    // async updateCart(context, id) {
+    //   try {
+    //     let { msg } = await (
+    //       await axios.patch(
+    //         `${lifeURL}cart/users/${id}/cart/${id}`,
            
-          )
-        ).data;
-        context.dispatch("fetchCart");
-        sweet({
-          title: "Update cart",
-          text: msg,
-          icon: "success",
-          timer: 2000,
-        });
-      } catch (e) {
-        sweet({
-          title: "Error",
-          text: "An error occurred when updating cart.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
-    async deleteCart(context, id) {
-      try {
-        let { msg } = await axios.delete(
-          `${lifeURL}users/${id}/cart`
-        );
+    //       )
+    //     ).data;
+    //     context.dispatch("fetchCart");
+    //     sweet({
+    //       title: "Update cart",
+    //       text: msg,
+    //       icon: "success",
+    //       timer: 2000,
+    //     });
+    //   } catch (e) {
+    //     sweet({
+    //       title: "Error",
+    //       text: "An error occurred when updating cart.",
+    //       icon: "error",
+    //       timer: 2000,
+    //     });
+    //   }
+    // },
+    // async deleteCart(context, id) {
+    //   try {
+    //     let { msg } = await axios.delete(
+    //       `${lifeURL}cart/users/${id}/cart`
+    //     );
 
-        context.dispatch("fetchCart");
-        sweet({
-          title: "Delete cart",
-          text: msg,
-          icon: "success",
-          timer: 2000,
-        });
-      } catch (e) {
-        sweet({
-          title: "Error",
-          text: "An error occurred when deleting cart.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
-    async deleteCartItem(context, id) {
-      try {
-        let { msg } = await axios.delete(
-          `${lifeURL}users/${id}/cart/${id}`
-        );
+    //     context.dispatch("fetchCart");
+    //     sweet({
+    //       title: "Delete cart",
+    //       text: msg,
+    //       icon: "success",
+    //       timer: 2000,
+    //     });
+    //   } catch (e) {
+    //     sweet({
+    //       title: "Error",
+    //       text: "An error occurred when deleting cart.",
+    //       icon: "error",
+    //       timer: 2000,
+    //     });
+    //   }
+    // },
+    // async deleteCartItem(context, id) {
+    //   try {
+    //     let { msg } = await axios.delete(
+    //       `${lifeURL}cart/users/${id}/cart/${id}`
+    //     );
 
-        context.dispatch("fetchCart");
-        sweet({
-          title: "Delete cart",
-          text: msg,
-          icon: "success",
-          timer: 2000,
-        });
-      } catch (e) {
-        sweet({
-          title: "Error",
-          text: "An error occurred when deleting cart.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
+    //     context.dispatch("fetchCart");
+    //     sweet({
+    //       title: "Delete cart",
+    //       text: msg,
+    //       icon: "success",
+    //       timer: 2000,
+    //     });
+    //   } catch (e) {
+    //     sweet({
+    //       title: "Error",
+    //       text: "An error occurred when deleting cart.",
+    //       icon: "error",
+    //       timer: 2000,
+    //     });
+    //   }
+    // },
 
 
 
@@ -362,6 +362,146 @@ export default createStore({
       }
     },
 
+    // fetchCart: async (context,id) => {
+    //   const res = await axios.get(`${lifeURL}users/${id}/carts`);
+      
+    //   const { result, err } = await res.data;
+      
+    //   if (result) {
+        
+    //     context.commit("setCart", result);
+    //   } else {
+    //     context.commit("setCart", err);
+    //   }
+    // },
+
+    // addToCart: async (context,payload) => {
+    //   console.log(payload);
+    //   const res = await axios.post(`${lifeURL}users/${payload.userID}/cart`, payload);
+    //   const { msg, err } = await res.data;
+
+    //   if (msg) {
+    //     console.log(msg);
+    //     context.commit("setMessage", msg);
+    //   } else {
+    //     context.commit("setMessage", err);
+    //     console.log(err);
+    //   }
+    // },
+    // deleteCartItem: async(context,id)=>{
+     
+    //   const res = await axios.delete(`${lifeURL}users/${id}/cart/${id}`);
+    //   const { msg, err } = await res.data;
+    
+    //   if (msg) {
+    //     context.commit("setMessage",msg);
+    //     context.dispatch("fetchCart");
+      
+    //   } else {
+    //     context.commit("setMessage", err);
+       
+    //   }
+
+    // },
+
+    // deleteCart: async(context,id)=>{
+    //   const res = await axios.delete(`${lifeURL}users/${id}/cart`);
+    //   console.log(res);
+    //   const { msg, err } = await res.data;
+      
+    //   if (msg) {
+    //     context.commit("setMessage", msg);
+    //     context.dispatch("fetchCart");
+        
+      
+    //   } else {
+    //     context.commit("setMessage", err);
+    //   }
+
+    // }
+  
+    async addCart(context, payload) {
+      try {
+        // Send a POST request to add a new item to the cart
+        await axios.post(`${lifeURL}cart/users/${payload.userID}/cart`, payload);
+        // Dispatch fetchCart to update the cart state after adding an item
+        context.dispatch("fetchCart", payload);
+        sweet({
+          title: "Adding Cart",
+          text: "Item added to cart successfully.",
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when adding to cart.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    
+    async fetchCart(context, payload) {
+      try {
+        // Retrieve the cart items for the logged-in user
+        let { results } = (await axios.get(`${lifeURL}cart/users/${payload}/carts`)).data;
+        // Update the cart state with the fetched cart items
+        context.commit("setCart", results);
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when retrieving carts.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    
+    async deleteCart(context, id) {
+      try {
+        // Delete the entire cart for the logged-in user
+        await axios.delete(`${lifeURL}cart/users/${id}/cart`);
+        // Dispatch fetchCart to update the cart state after deleting the cart
+        context.dispatch("fetchCart", id);
+        sweet({
+          title: "Delete cart",
+          text: "Cart deleted successfully.",
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when deleting cart.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    
+    async deleteCartItem(context, id) {
+      try {
+        // Delete a specific item from the cart based on the item ID
+        await axios.delete(`${lifeURL}cart/users/${id}/cart/${id}`);
+        // Dispatch fetchCart to update the cart state after deleting the item
+        context.dispatch("fetchCart", id);
+        sweet({
+          title: "Delete cart",
+          text: "Item deleted from cart successfully.",
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when deleting cart item.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    
   },
   modules: {},
 });
