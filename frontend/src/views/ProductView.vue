@@ -25,7 +25,7 @@ import Spinner from '@/components/Spinner.vue';
 export default {
     data() {
         return {
-            quantity: 1 // Default quantity
+            quantity: 1 
         };
     },
     components: {
@@ -46,13 +46,13 @@ export default {
         addToCart(product) {
             const payload = {
                 product,
-                quantity: parseInt(this.quantity) || 1, // Use the quantity from the input field or default to 1
-                userID: this.loggedUser?.userID,// Check if loggedUser exists
+                quantity: parseInt(this.quantity) || 1, 
+                userID: this.loggedUser?.UserID,
                
-                prodID: product.prodID // Assuming prodID is a property of the product
+                prodID: product.prodID 
                 
             };
-            console.log(this.loggedUser);
+            console.log(this.loggedUser.UserID);
             this.$store.dispatch('addCart', payload);
         }
     }

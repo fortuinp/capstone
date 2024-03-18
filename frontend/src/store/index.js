@@ -362,69 +362,11 @@ export default createStore({
       }
     },
 
-    // fetchCart: async (context,id) => {
-    //   const res = await axios.get(`${lifeURL}users/${id}/carts`);
-      
-    //   const { result, err } = await res.data;
-      
-    //   if (result) {
-        
-    //     context.commit("setCart", result);
-    //   } else {
-    //     context.commit("setCart", err);
-    //   }
-    // },
 
-    // addToCart: async (context,payload) => {
-    //   console.log(payload);
-    //   const res = await axios.post(`${lifeURL}users/${payload.userID}/cart`, payload);
-    //   const { msg, err } = await res.data;
-
-    //   if (msg) {
-    //     console.log(msg);
-    //     context.commit("setMessage", msg);
-    //   } else {
-    //     context.commit("setMessage", err);
-    //     console.log(err);
-    //   }
-    // },
-    // deleteCartItem: async(context,id)=>{
-     
-    //   const res = await axios.delete(`${lifeURL}users/${id}/cart/${id}`);
-    //   const { msg, err } = await res.data;
-    
-    //   if (msg) {
-    //     context.commit("setMessage",msg);
-    //     context.dispatch("fetchCart");
-      
-    //   } else {
-    //     context.commit("setMessage", err);
-       
-    //   }
-
-    // },
-
-    // deleteCart: async(context,id)=>{
-    //   const res = await axios.delete(`${lifeURL}users/${id}/cart`);
-    //   console.log(res);
-    //   const { msg, err } = await res.data;
-      
-    //   if (msg) {
-    //     context.commit("setMessage", msg);
-    //     context.dispatch("fetchCart");
-        
-      
-    //   } else {
-    //     context.commit("setMessage", err);
-    //   }
-
-    // }
   
     async addCart(context, payload) {
       try {
-        // Send a POST request to add a new item to the cart
-        await axios.post(`${lifeURL}cart/users/${payload.userID}/cart`, payload);
-        // Dispatch fetchCart to update the cart state after adding an item
+        await axios.post(`${lifeURL}cart/users/${payload.id}/cart`, payload);
         context.dispatch("fetchCart", payload);
         sweet({
           title: "Adding Cart",
@@ -444,9 +386,9 @@ export default createStore({
     
     async fetchCart(context, payload) {
       try {
-        // Retrieve the cart items for the logged-in user
+
         let { results } = (await axios.get(`${lifeURL}cart/users/${payload}/carts`)).data;
-        // Update the cart state with the fetched cart items
+
         context.commit("setCart", results);
       } catch (e) {
         sweet({
@@ -460,9 +402,9 @@ export default createStore({
     
     async deleteCart(context, id) {
       try {
-        // Delete the entire cart for the logged-in user
+
         await axios.delete(`${lifeURL}cart/users/${id}/cart`);
-        // Dispatch fetchCart to update the cart state after deleting the cart
+
         context.dispatch("fetchCart", id);
         sweet({
           title: "Delete cart",
@@ -482,9 +424,9 @@ export default createStore({
     
     async deleteCartItem(context, id) {
       try {
-        // Delete a specific item from the cart based on the item ID
+
         await axios.delete(`${lifeURL}cart/users/${id}/cart/${id}`);
-        // Dispatch fetchCart to update the cart state after deleting the item
+
         context.dispatch("fetchCart", id);
         sweet({
           title: "Delete cart",
