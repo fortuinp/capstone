@@ -12,7 +12,7 @@ cartRouter.get('/users/:id/carts',(req,res)=>{
     }catch(e){
         res.json({
             status:res.statusCode,
-            msg:'failed to retrieve a cart'
+            msg:'failed to retrieve cart'
         })
     }
 

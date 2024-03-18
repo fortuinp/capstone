@@ -2,7 +2,7 @@ import { dbconnection as db } from "../config/index.js";
 class Cart {
   fetchCart(req, res) {
     const qry = `
-    SELECT cartID, Users.userID, Users.firstname,Products.prodID,Products.prodName,Products.prodCategory,Products.prodUrl, Cart.quantity, Products.amount*Cart.quantity as TotalAmount
+    SELECT cartID, Users.userID, Users.firstname,Products.prodID,Products.prodName,Products.prodCategory,Products.prodUrl, Cart.quantity, Products.amount,Products.amount*Cart.quantity as TotalAmount
     FROM Cart
     INNER JOIN Products ON Cart.prodID = Products.prodID
     INNER JOIN Users ON Cart.userID = Users.userID
