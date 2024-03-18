@@ -5,6 +5,7 @@
         <thead>
           <tr>
             <th>Product Name</th>
+            <th>Price</th>
             <th>Qty</th>
             <th>Total</th>
           </tr>
@@ -12,6 +13,7 @@
         <tbody>
           <tr v-for="item in cart" :key="item.cartID">
             <td>{{ item.prodName }}</td>
+            <td>{{ item.amount }}</td>
             <td>{{item.quantity}}</td>
             <td>{{ item.TotalAmount }}</td>
           
@@ -62,25 +64,12 @@ export default {
     },
   },
   created() {
-    // Fetch cart data when the component is created
     this.fetchCart();
   },
   methods: {
-    // Other methods
     fetchCart() {
-      // Call the Vuex action to fetch cart data
       this.$store.dispatch("fetchCart", this.loggedUser.UserID)
-        .then(() => {
-          // Cart data fetched successfully
-          console.log("Cart fetched successfully:", this.cart);
-        })
-        .catch(error => {
-          // Handle error
-          console.error("Error fetching cart:", error);
-        });
-    },
-    // Other methods
-  },
+    }}
 };
 </script>
 
