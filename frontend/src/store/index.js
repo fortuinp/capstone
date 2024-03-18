@@ -92,11 +92,11 @@ export default createStore({
         });
       }
     },
-    async updateUser(context, id ){
+    async updateUser(context, payload){
       try {
-        
+        console.log(payload);
         let { msg } = await (
-          await axios.patch(`${lifeURL}users/update/${id}`)
+          await axios.patch(`${lifeURL}users/update/${payload.userID}`, payload )
         ).data;
 
         context.dispatch("fetchUsers");
@@ -107,9 +107,10 @@ export default createStore({
           timer: 2000,
         });
       } catch (e) {
+        // "An error occurred when updating a user."
         sweet({
           title: "Error",
-          text: "An error occurred when updating a user.",
+          text: e.message,
           icon: "error",
           timer: 2000,
         });
