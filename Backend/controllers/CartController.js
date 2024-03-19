@@ -6,7 +6,7 @@ import { verifyToken } from '../middleware/Aunthentication.js'
 const cartRouter=express.Router()
 
 //fetch all products
-cartRouter.get('/users/:id/carts',(req,res)=>{
+cartRouter.get('/:id/carts',(req,res)=>{
     try{
         cart.fetchCart(req,res)
     }catch(e){
@@ -18,7 +18,7 @@ cartRouter.get('/users/:id/carts',(req,res)=>{
 
 })
 
-cartRouter.post('/users/:id/cart',bodyParser.json(),(req,res)=>{
+cartRouter.post('/:id/cart',bodyParser.json(),(req,res)=>{
     try{
         cart.addCart(req,res)
     }catch(e){
@@ -29,7 +29,7 @@ cartRouter.post('/users/:id/cart',bodyParser.json(),(req,res)=>{
     }
 })
 
-cartRouter.delete('/users/:id/cart',(req,res)=>{
+cartRouter.delete('/:id/cart',(req,res)=>{
     try{
         cart.deleteCart(req,res)
     }catch(e){
@@ -41,7 +41,7 @@ cartRouter.delete('/users/:id/cart',(req,res)=>{
 
 
 })
-cartRouter.delete('/users/:id/cart/:id',(req,res)=>{
+cartRouter.delete('/:id/cart/:id',(req,res)=>{
     try{
         cart.deleteCartItem(req,res)
     }catch(e){
@@ -53,7 +53,7 @@ cartRouter.delete('/users/:id/cart/:id',(req,res)=>{
 
 
 })
-cartRouter.patch('/users/:id/cart/:id',bodyParser.json(),(req,res)=>{
+cartRouter.patch('/:id/cart/:id',bodyParser.json(),(req,res)=>{
     try{
         cart.updateCartItem(req,res)
     }catch(e){
