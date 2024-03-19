@@ -26,10 +26,8 @@
           <label for="email" class="form-label">Email Address</label>
           <input type="email" class="form-control" placeholder="Email Address" name="email" v-model="payload.emailAdd" required>
         </div>
-        <div class="mb-3">
-          <label for="userRole" class="form-label">User Role</label>
-          <input type="text" class="form-control" placeholder="User Role" name="userRole" :value="payload.userRole" disabled>
-        </div>
+       
+
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" placeholder="Password" name="password" required>
@@ -56,8 +54,8 @@ export default {
         "userAge": JSON.parse(localStorage.getItem("loggedUser")).result.userAge,
         "gender": JSON.parse(localStorage.getItem("loggedUser")).result.gender,
         "emailAdd": JSON.parse(localStorage.getItem("loggedUser")).result.emailAdd,
-        "userPass": JSON.parse(localStorage.getItem("loggedUser")).result.userPass,
-        "userRole": JSON.parse(localStorage.getItem("loggedUser")).result.userRole
+        "userPass": JSON.parse(localStorage.getItem("loggedUser")).result.userPass
+  
       }
     }
   },
@@ -76,10 +74,7 @@ export default {
       this.$router.push({ name: "home" });
     },
     editUser() {
-      // Here you should update the payload object with new data
       this.$store.dispatch('updateUser', this.payload);
-      // Optionally, you can update the local storage with new user data if needed
-      // localStorage.setItem("loggedUser", JSON.stringify({ result: this.payload }));
     }
   }
 }

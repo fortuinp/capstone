@@ -140,189 +140,189 @@ export default createStore({
     },
 
     async login(context, payload) {
-  try {
-    let { result, msg, token } = (
-      await axios.post(`${lifeURL}users/login`, payload)
-    ).data;
+      console.log(payload);
+      try {
+        let { result, msg, token } = (
+          await axios.post(`${lifeURL}users/login`, payload)
+        ).data;
 
-    if (result) {
-      context.commit("setUser", { result, msg, token });
-      localStorage.setItem("loggedUser", JSON.stringify({ token, result, msg }));
+        if (result) {
+          context.commit("setUser", { result, msg });
+          localStorage.setItem(
+            "loggedUser",
+            JSON.stringify({ token, result, msg })
+          );
+          // AunthenticatedUser.applyToken(token)
 
-      sweet({
-        title: msg,
-        text: `Welcome Back, ${result?.firstName} ${result?.lastName}`,
-        icon: "success",
-        timer: 2000,
-      });
+          sweet({
+            title: msg,
+            text: `Welcome Back, ${result?.firstName} ${result?.lastName}`,
+            icon: "success",
+            timer: 2000,
+          });
 
-      router.push({ name: "home" }).then(location.reload());
-    } else {
-      sweet({
-        title: "Error",
-        text: msg,
-        icon: "error",
-        timer: 2000,
-      });
-    }
-  } catch {
-    sweet({
-      title: "Error",
-      text: "Can't log in",
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
+          router.push({ name: "home" }).then(location.reload());
+        } else {
+          sweet({
+            title: "Error",
+            text: msg,
+            icon: "error",
+            timer: 2000,
+          });
+        }
+      } catch {
+        sweet({
+          title: "Error",
+          text: "Can't log in",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
 
-// logout() {
-//   localStorage.removeItem("loggedUser");
-//   router.push({ name: "home" });
-// },
+    logout() {
+      localStorage.removeItem("loggedUser");
+      router.push({ name: "home" });
+    },
 
+    async addProduct(context, add) {
+      try {
+        let { msg } = await axios.post(`${lifeURL}products/addProduct`, add);
+        context.dispatch("fetchProducts");
+        sweet({
+          title: "Product Added.",
+          text: msg,
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: e.message,
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    async fetchProducts(context) {
+      try {
+        let { results } = (await axios.get(`${lifeURL}products`)).data;
+        if (results) {
+          context.commit("setProducts", results);
+        }
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when retrieving products.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    async fetchProduct(context, payload) {
+      try {
+        let { result } = (await axios.get(`${lifeURL}products/${payload.id}`))
+          .data;
+        if (result) {
+          context.commit("setProduct", result);
+        } else {
+          sweet({
+            title: "Retrieving a single product",
+            text: "Product was not found",
+            icon: "info",
+            timer: 2000,
+          });
+        }
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "Product was not found.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    async updateProduct(context, payload) {
+      try {
+        let { msg } = await (
+          await axios.patch(
+            `${lifeURL}products/update/${payload.prodID}`,
+            payload
+          )
+        ).data;
 
-async addProduct(context, add) {
-  try {
-    let { msg } = await axios.post(`${lifeURL}products/addProduct`, add);
-    context.dispatch("fetchProducts");
-    sweet({
-      title: "Product Added.",
-      text: msg,
-      icon: "success",
-      timer: 2000,
-    });
-  } catch (e) {
-    sweet({
-      title: "Error",
-      text: e.message,
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
-async fetchProducts(context) {
-  try {
-    let { results } = (await axios.get(`${lifeURL}products`)).data;
-    if (results) {
-      context.commit("setProducts", results);
-    }
-  } catch (e) {
-    sweet({
-      title: "Error",
-      text: "An error occurred when retrieving products.",
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
-async fetchProduct(context, payload) {
-  try {
-    let { result } = (await axios.get(`${lifeURL}products/${payload.id}`))
-      .data;
-    if (result) {
-      context.commit("setProduct", result);
-    } else {
-      sweet({
-        title: "Retrieving a single product",
-        text: "Product was not found",
-        icon: "info",
-        timer: 2000,
-      });
-    }
-  } catch (e) {
-    sweet({
-      title: "Error",
-      text: "Product was not found.",
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
-async updateProduct(context, payload) {
-  try {
-    let { msg } = await (
-      await axios.patch(`${lifeURL}products/update/${payload.prodID}`,payload)
-    ).data;
- 
-    context.dispatch("fetchProducts");
-    sweet({
-      title: "Update user",
-      text: msg,
-      icon: "success",
-      timer: 2000,
-    });
-  } catch (e) {
-    sweet({
-      title: "Error",
-      text: "An error occurred when updating the product.",
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
-async deleteProduct(context, id) {
-  try {
-    let { msg } = await axios.delete(`${lifeURL}products/delete/${id}`);
+        context.dispatch("fetchProducts");
+        sweet({
+          title: "Update user",
+          text: msg,
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when updating the product.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    async deleteProduct(context, id) {
+      try {
+        let { msg } = await axios.delete(`${lifeURL}products/delete/${id}`);
 
-    context.dispatch("fetchProducts");
-    sweet({
-      title: "Deleted product",
-      text: msg,
-      icon: "success",
-      timer: 2000,
-    });
-  } catch (e) {
-    sweet({
-      title: "Error",
-      text: "An error occurred when deleting the product.",
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
+        context.dispatch("fetchProducts");
+        sweet({
+          title: "Deleted product",
+          text: msg,
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when deleting the product.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
 
+    async addCart(context, payload) {
+      try {
+        (await axios.post(`${lifeURL}user/${payload.userID}/cart`, payload))
+          .data;
+        context.dispatch("fetchCart", payload);
+        sweet({
+          title: "Adding Cart",
+          text: "Item added to cart successfully.",
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when adding to cart.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
 
-
-async addCart(context, payload) {
-
-  try {
- 
-    (await axios.post(`${lifeURL}user/${payload.userID}/cart`, payload)).data;
-    context.dispatch("fetchCart", payload);
-    sweet({
-      title: "Adding Cart",
-      text: "Item added to cart successfully.",
-      icon: "success",
-      timer: 2000,
-    });
-  } catch (e) {
-    sweet({
-      title: "Error",
-      text: "An error occurred when adding to cart.",
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
-
-async fetchCart(context, id){
-  console.log(id);
-  try {
- 
-    let { results } = (await axios.get(`${lifeURL}user/${id}/carts`)).data;
-    context.commit("setCart", results);
-  } catch (e) {
-    sweet({
-      title: "Error",
-      text: "An error occurred when retrieving carts.",
-      icon: "error",
-      timer: 2000,
-    });
-  }
-},
-
-
- 
+    async fetchCart(context, id) {
+      console.log(id);
+      try {
+        let { results } = (await axios.get(`${lifeURL}user/${id}/carts`)).data;
+        context.commit("setCart", results);
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when retrieving carts.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
 
     async deleteCart(context, id) {
       try {

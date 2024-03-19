@@ -36,7 +36,7 @@
             <li class="nav-item" v-if="!user">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
-            <li class="nav-item" v-if="user && user.userRole === 'admin'">
+            <li class="nav-item" v-if="user ">
               <router-link to="/admin" class="nav-link">Admin</router-link>
             </li>
             <li class="nav-item" v-if="user">

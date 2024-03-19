@@ -157,7 +157,6 @@ data(){
     emailAdd:'',
     userPass:'',
     userAge:'',
-    userRole:'',
     gender:''
   
   }
