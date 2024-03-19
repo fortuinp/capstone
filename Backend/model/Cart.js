@@ -6,10 +6,10 @@ class Cart {
     FROM Cart
     INNER JOIN Products ON Cart.prodID = Products.prodID
     INNER JOIN Users ON Cart.userID = Users.userID
-    where Users.userID= ${req.params.id};
+    where Users.userID= ?;
         
         `;
-    db.query(qry, [req.body], (err, results) => {
+    db.query(qry, [req.params.id], (err, results) => {
       if (err) throw err ;
       res.json({
         status: res.statusCode,
