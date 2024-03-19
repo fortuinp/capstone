@@ -257,8 +257,9 @@ export default createStore({
 
   
     async addCart(context, payload) {
+
       try {
-        console.log(payload.userID);
+     
         (await axios.post(`${lifeURL}user/${payload.userID}/cart`, payload)).data;
         context.dispatch("fetchCart", payload);
         sweet({
@@ -279,8 +280,8 @@ export default createStore({
     
     async fetchCart(context, id){
       try {
-
-        let { results } = (await axios.get(`${lifeURL}user/${id}/carts`)).data;
+      console.log(id.userID);
+        let { results } = (await axios.get(`${lifeURL}user/${id.userID}/carts`)).data;
         context.commit("setCart", results);
       } catch (e) {
         sweet({

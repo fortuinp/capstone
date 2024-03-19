@@ -26,7 +26,8 @@
 
   <div class="d-flex justify-content-between">
     <router-link to="/products" class="btn btn-primary">Continue Shopping</router-link>
-    <button type="button" @click.prevent="checkoutCart" class="btn btn-success">Checkout Cart</button>
+    <!-- <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Checkout Cart</button> -->
+    
 
   </div>
 
@@ -69,7 +70,15 @@ export default {
   methods: {
     fetchCart() {
       this.$store.dispatch("fetchCart", this.loggedUser.UserID)
-    }}
-};
+      console.log(this.loggedUser.UserID);
+    },
+  
+    // deleteCartItem(id) {
+    //   this.$store.dispatch("deleteCartItem",id);
+    //   console.log(id)
+    // },
+    // deleteCart() {
+    //   this.$store.dispatch("deleteCart", this.loggedUser.UserID);
+}}
 </script>
 
