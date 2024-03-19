@@ -36,7 +36,7 @@
             <li class="nav-item" v-if="!user">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
-            <li class="nav-item" v-if="user ">
+            <li class="nav-item" v-if="user && user.userRole === 'admin'">
               <router-link to="/admin" class="nav-link">Admin</router-link>
             </li>
             <li class="nav-item" v-if="user">
@@ -62,7 +62,7 @@
 
     },
     mounted() {
-      this.user = this.loggedUser || JSON.parse(localStorage.getItem("loggedUser"));
+      this.user = this.loggedUser || JSON.parse(localStorage.getItem("loggedUser")).result;
     },
     methods: {
       logOut() {
