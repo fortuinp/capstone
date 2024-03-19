@@ -259,7 +259,7 @@ export default createStore({
     async addCart(context, payload) {
       try {
         console.log(payload.userID);
-        (await axios.post(`${lifeURL}users/${payload.userID}/cart`, payload)).data;
+        (await axios.post(`${lifeURL}user/${payload.userID}/cart`, payload)).data;
         context.dispatch("fetchCart", payload);
         sweet({
           title: "Adding Cart",
@@ -280,7 +280,7 @@ export default createStore({
     async fetchCart(context, id){
       try {
 
-        let { results } = (await axios.get(`${lifeURL}users/${id}/carts`)).data;
+        let { results } = (await axios.get(`${lifeURL}user/${id}/carts`)).data;
         context.commit("setCart", results);
       } catch (e) {
         sweet({
@@ -295,7 +295,7 @@ export default createStore({
     async deleteCart(context, id) {
       try {
 
-        await axios.delete(`${lifeURL}users/${id}/cart`);
+        await axios.delete(`${lifeURL}user/${id}/cart`);
 
         context.dispatch("fetchCart", id);
         sweet({
@@ -317,7 +317,7 @@ export default createStore({
     async deleteCartItem(context, id) {
       try {
 
-        await axios.delete(`${lifeURL}users/${id}/cart/${id}`);
+        await axios.delete(`${lifeURL}user/${id}/cart/${id}`);
 
         context.dispatch("fetchCart", id);
         sweet({
