@@ -279,9 +279,10 @@ export default createStore({
     },
     
     async fetchCart(context, id){
+      console.log(id);
       try {
-      console.log(id.userID);
-        let { results } = (await axios.get(`${lifeURL}user/${id.userID}/carts`)).data;
+     
+        let { results } = (await axios.get(`${lifeURL}user/${id}/carts`)).data;
         context.commit("setCart", results);
       } catch (e) {
         sweet({
