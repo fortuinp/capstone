@@ -5,6 +5,7 @@
           <div class="row">
             <div class="col-sm-8">
               <form @submit.prevent="signup">
+              
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label"
                     >FirstName</label
@@ -75,20 +76,7 @@
                     v-model="emailAdd"
                   />
                 </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label"
-                    >User Role</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    
-                    placeholder="role"
-                    name="UserRole"
-                    required
-                    v-model="user"
-                  />
-                </div>
+               
                 
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"
@@ -116,7 +104,7 @@
                   >
                     Sign Up
                   </button>
-               
+             
                 </div>
               </form>
             </div>

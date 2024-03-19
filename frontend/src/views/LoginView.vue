@@ -65,13 +65,13 @@ export default {
       this.$store.dispatch("login", this.payload)
         .then(() => {
          
-         location.reload;
+          location.reload()
           
         })
         
     },
   },
-};
+}
 </script>
 
 <style scoped>

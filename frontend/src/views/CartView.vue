@@ -8,6 +8,7 @@
             <th>Price</th>
             <th>Qty</th>
             <th>Total</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +18,24 @@
             <td>{{item.quantity}}</td>
             <td>{{ item.TotalAmount }}</td>
           
+            <td>
+              <form class="form-inline">
+                <!-- <input
+                  class="form-control"
+                  type="text"
+                  :value="item.quantity"
+                />
+                <button rel="tooltip" class="btn btn-default">
+                  <i class="bi bi-archive-fill"></i>
+                </button> -->
+                <button
+                  @click.prevent="deleteCartItem(item?.cartID)"
+                  class="btnDelete">
+                  <i class="bi bi-archive-fill"></i>
+                </button>
+              </form>
+            </td>
+
           </tr>
         </tbody>
       </table>
@@ -26,7 +45,7 @@
 
   <div class="d-flex justify-content-between">
     <router-link to="/products" class="btn btn-primary">Continue Shopping</router-link>
-    <!-- <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Checkout Cart</button> -->
+    <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Checkout Cart</button>
     
 
   </div>
@@ -61,24 +80,33 @@ export default {
       return this.$store.state.cart;
     },
     loggedUser() {
-      return JSON.parse(localStorage.getItem("loggedUser"));
+      return JSON.parse(localStorage.getItem("loggedUser")).result;
     },
   },
   created() {
-    this.fetchCart();
+    this.$store.dispatch("fetchCart", this.loggedUser.UserID);
   },
   methods: {
-    fetchCart() {
-      this.$store.dispatch("fetchCart", this.loggedUser.UserID)
-      console.log(this.loggedUser.UserID);
-    },
+    // fetchCart() {
+    //   this.$store.dispatch("fetchCart", this.loggedUser.UserID)
+    //   console.log(this.loggedUser.UserID);
+    // },
   
     // deleteCartItem(id) {
     //   this.$store.dispatch("deleteCartItem",id);
     //   console.log(id)
     // },
-    // deleteCart() {
-    //   this.$store.dispatch("deleteCart", this.loggedUser.UserID);
-}}
+    // deleteCartItem(id) {
+    //   this.$store.dispatch("deleteCartItem",id);
+    //   console.log(id)
+    // },
+    deleteCart() {
+    this.$store.dispatch("deleteCart", this.loggedUser.UserID);
+}
+},
+// mounted() {
+//   console.log(this.loggedUser);
+// }
+}
 </script>
 

@@ -36,7 +36,7 @@ export default {
             return this.$store.state.product;
         },
         loggedUser(){
-      return JSON.parse(localStorage.getItem("loggedUser"));
+      return JSON.parse(localStorage.getItem("loggedUser")).result;
     }
     },
     mounted() {

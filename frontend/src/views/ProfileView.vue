@@ -5,7 +5,7 @@
       <div class="row d-flex justify-content-center">
         <img src="https://i.postimg.cc/mZ70qtgL/profile.webp" alt="User" class="img-fluid img-thumbnail">
       </div>
-      <form >
+      <form>
         <div class="mb-3">
           <label for="firstName" class="form-label">First Name</label>
           <input type="text" class="form-control" placeholder="First Name" name="firstName" v-model="payload.firstName" required>
@@ -27,8 +27,12 @@
           <input type="email" class="form-control" placeholder="Email Address" name="email" v-model="payload.emailAdd" required>
         </div>
         <div class="mb-3">
+          <label for="userRole" class="form-label">User Role</label>
+          <input type="text" class="form-control" placeholder="User Role" name="userRole" :value="payload.userRole" disabled>
+        </div>
+        <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" placeholder="Password" name="password" v-model="payload.userPass" required>
+          <input type="password" class="form-control" placeholder="Password" name="password" required>
         </div>
         <div class="col-auto">
           <button type="button" @click.prevent="editUser" class="btn btn-primary">Update Profile</button>
@@ -46,19 +50,20 @@ export default {
   data() {
     return {
       payload: {
-        "userID": JSON.parse(localStorage.getItem("loggedUser")).UserID,
-        "firstName": JSON.parse(localStorage.getItem("loggedUser")).firstName,
-        "lastName": JSON.parse(localStorage.getItem("loggedUser")).lastName,
-        "userAge": JSON.parse(localStorage.getItem("loggedUser")).userAge,
-        "gender": JSON.parse(localStorage.getItem("loggedUser")).gender,
-        "emailAdd": JSON.parse(localStorage.getItem("loggedUser")).emailAdd,
-        "userPass": ""
+        "userID": JSON.parse(localStorage.getItem("loggedUser")).result.UserID,
+        "firstName": JSON.parse(localStorage.getItem("loggedUser")).result.firstName,
+        "lastName": JSON.parse(localStorage.getItem("loggedUser")).result.lastName,
+        "userAge": JSON.parse(localStorage.getItem("loggedUser")).result.userAge,
+        "gender": JSON.parse(localStorage.getItem("loggedUser")).result.gender,
+        "emailAdd": JSON.parse(localStorage.getItem("loggedUser")).result.emailAdd,
+        "userPass": JSON.parse(localStorage.getItem("loggedUser")).result.userPass,
+        "userRole": JSON.parse(localStorage.getItem("loggedUser")).result.userRole
       }
     }
   },
   computed: {
     loggedUser() {
-      return JSON.parse(localStorage.getItem("loggedUser"));
+      return JSON.parse(localStorage.getItem("loggedUser")).result;
     }
   },
   methods: {
@@ -67,14 +72,15 @@ export default {
       this.logOut();
     },
     logOut() {
-      this.user = null || JSON.parse(localStorage.removeItem("loggedUser"));
-      location.reload();
+      localStorage.removeItem("loggedUser");
+      this.$router.push({ name: "home" });
     },
     editUser() {
-  // const updateData = Object.assign({}, this.loggedUser.UserID,this.payload);
-  this.$store.dispatch('updateUser', this.payload);
-}
-
+      // Here you should update the payload object with new data
+      this.$store.dispatch('updateUser', this.payload);
+      // Optionally, you can update the local storage with new user data if needed
+      // localStorage.setItem("loggedUser", JSON.stringify({ result: this.payload }));
+    }
   }
 }
 </script>

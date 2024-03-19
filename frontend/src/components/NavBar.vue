@@ -21,26 +21,26 @@
             <li class="nav-item" v-if="user">
               <router-link to="/products" class="nav-link">Shop</router-link>
             </li>
+            <li class="nav-item" v-if="user">
+              <router-link to="/cart" class="nav-link">Cart</router-link>
+            </li>
+            <li class="nav-item" v-if="user">
+              <router-link to="/profile" class="nav-link">Profile</router-link>
+            </li>
             <li class="nav-item">
               <router-link to="/contact" class="nav-link">Contact</router-link>
             </li>
-            <li class="nav-item" v-if="!user">
+            <!-- <li class="nav-item" v-if="!user">
               <router-link to="/register" class="nav-link">Sign Up</router-link>
-            </li>
+            </li> -->
             <li class="nav-item" v-if="!user">
-              <router-link to="/login" class="nav-link">Sign In</router-link>
-            </li>
-            <li class="nav-item" v-if="user">
-              <a class="nav-link" href="#" @click="logOut">Sign Out</a>
+              <router-link to="/login" class="nav-link">Login</router-link>
             </li>
             <li class="nav-item" v-if="user && user.userRole === 'admin'">
               <router-link to="/admin" class="nav-link">Admin</router-link>
             </li>
             <li class="nav-item" v-if="user">
-              <router-link to="/profile" class="nav-link">Profile</router-link>
-            </li>
-            <li class="nav-item" v-if="user">
-              <router-link to="/cart" class="nav-link">Cart</router-link>
+              <router-link to="/logout" class="nav-link">Logout</router-link>
             </li>
           </ul>
         </div>
@@ -58,12 +58,8 @@
     computed: {
       loggedUser() {
         return this.$store.state.user;
-      },
-      userrID(){
-        let userId  = localStorage.getItem("loggedUser")
-        console.log(userId.UserID);
-        return userId.UserID
       }
+
     },
     mounted() {
       this.user = this.loggedUser || JSON.parse(localStorage.getItem("loggedUser"));
@@ -73,8 +69,9 @@
         this.user = null;
         localStorage.removeItem("loggedUser");
       },
+      
     },
-  };
+  }
   </script>
   
   <style scoped>

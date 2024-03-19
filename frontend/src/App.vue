@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     loggedUser(){
-        return JSON.parse(localStorage.getItem("loggedUser"));
+        return JSON.parse(localStorage.getItem("loggedUser")).result;
       }
   }
 }
