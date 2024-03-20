@@ -71,8 +71,10 @@ export default {
       this.$router.push({ name: "home" });
     },
     editUser() {
-      this.$store.dispatch('updateUser', this.payload);
-    }
+      const userID = this.loggedUser.UserID;
+        const updateData = Object.assign({}, {userID}, this.payload)
+        this.$store.dispatch('updateUser', updateData)
+      }
   }
 }
 </script>

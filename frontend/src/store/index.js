@@ -152,7 +152,7 @@ export default createStore({
             "loggedUser",
             JSON.stringify({ token, result, msg })
           );
-           AunthenticatedUser.applyToken(token)
+         AunthenticatedUser.applyToken(token)
 
           sweet({
             title: msg,
