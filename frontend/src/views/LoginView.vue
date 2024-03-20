@@ -29,7 +29,9 @@
                   required
                 />
               </div>
-              
+              <div class="mb-3">
+                <p class="lead">{{ message }}</p>
+              </div>
               <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Login</button>
                 

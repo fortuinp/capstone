@@ -169,6 +169,7 @@ export default createStore({
             icon: "error",
             timer: 2000,
           });
+          router.push({ name: "login" });
         }
       } catch {
         sweet({
@@ -177,6 +178,7 @@ export default createStore({
           icon: "error",
           timer: 2000,
         });
+        
       }
     },
 
