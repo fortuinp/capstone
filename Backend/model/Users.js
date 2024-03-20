@@ -103,14 +103,14 @@ class Users {
 
   async updateUser(req,res){
     const data=req.body
-    if(data?.userPwd){
-      data.userPwd=await hash(data?.userPwd,8)
+    if(data?.userPass){
+      data.userPass=await hash(data?.userPass,8)
     }
     const qry=`
   UPDATE Users 
   SET ?
-  WHERE userID=${req.params.id};`
-  db.query(qry, [data], (err) => {
+  WHERE userID= ${req.params.id};`
+  db.query(qry,[data], (err) => {
       if (err) throw err 
         res.json({
           status: res.statusCode,
@@ -134,7 +134,6 @@ class Users {
     });
   });
   }
-
 }
 
 
