@@ -20,14 +20,7 @@
           
             <td>
               <form class="form-inline">
-                <!-- <input
-                  class="form-control"
-                  type="text"
-                  :value="item.quantity"
-                />
-                <button rel="tooltip" class="btn btn-default">
-                  <i class="bi bi-archive-fill"></i>
-                </button> -->
+                
                 <button
                   @click.prevent="deleteCartItem(item?.cartID)"
                   class="btnDelete">
@@ -37,7 +30,17 @@
             </td>
 
           </tr>
+          
         </tbody>
+        <tfoot>
+            <tr>
+            <td class="text-right"><strong>Total Amount Due :</strong></td>
+            <td></td>
+            <td></td>
+            <td id="sum">{{totalSum()}}</td>
+            <td><button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Clear cart</button></td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </div>
@@ -45,7 +48,7 @@
 
   <div class="d-flex justify-content-between">
     <router-link to="/products" class="btn btn-primary">Continue Shopping</router-link>
-    <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Checkout Cart</button>
+    <!-- <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Clear cart</button> -->
     
 
   </div>
@@ -77,7 +80,7 @@
 export default {
   computed: {
     cart() {
-      return this.$store.state.cart;
+      return this.$store.state.cart || []; // Ensure that cart is always an array
     },
     loggedUser() {
       return JSON.parse(localStorage.getItem("loggedUser")).result;
@@ -87,26 +90,20 @@ export default {
     this.$store.dispatch("fetchCart", this.loggedUser.UserID);
   },
   methods: {
-    // fetchCart() {
-    //   this.$store.dispatch("fetchCart", this.loggedUser.UserID)
-    //   console.log(this.loggedUser.UserID);
-    // },
-  
-    // deleteCartItem(id) {
-    //   this.$store.dispatch("deleteCartItem",id);
-    //   console.log(id)
-    // },
-    // deleteCartItem(id) {
-    //   this.$store.dispatch("deleteCartItem",id);
-    //   console.log(id)
-    // },
+    totalSum() {
+      let sum = 0;
+      for (let item of this.cart) {
+        sum += parseFloat(item.amount) * parseInt(item.quantity);
+      }
+      return sum.toFixed(2);
+    },
+    deleteCartItem(id) {
+      this.$store.dispatch("deleteCartItem", id);
+    },
     deleteCart() {
-    this.$store.dispatch("deleteCart", this.loggedUser.UserID);
-}
-},
-// mounted() {
-//   console.log(this.loggedUser);
-// }
+      this.$store.dispatch("deleteCart", this.loggedUser.UserID);
+    }
+  }
 }
 </script>
 

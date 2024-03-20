@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import axios from "axios";
 import sweet from "sweetalert";
 import router from "@/router";
-import AunthenticatedUser from "@/services/AunthenticatedUser";
+//import AunthenticatedUser from "@/services/AunthenticatedUser";
 //import { useCookies } from "vue3-cookies";
 const lifeURL = "https://capstone-w5uv.onrender.com/";
 
@@ -13,6 +13,7 @@ export default createStore({
     products: null,
     product: null,
     cart: null,
+    carts: null,
   },
   getters: {},
   mutations: {
@@ -30,6 +31,9 @@ export default createStore({
     },
 
     setCart(state, value) {
+      state.cart = value;
+    },
+    setCarts(state, value) {
       state.cart = value;
     },
     setMessage(state, value) {
@@ -152,7 +156,7 @@ export default createStore({
             "loggedUser",
             JSON.stringify({ token, result, msg })
           );
-         AunthenticatedUser.applyToken(token)
+         //AunthenticatedUser.applyToken(token)
 
           sweet({
             title: msg,
@@ -297,6 +301,8 @@ export default createStore({
         (await axios.post(`${lifeURL}user/${payload.userID}/cart`, payload))
           .data;
         context.dispatch("fetchCart", payload);
+        context.commit("setCart", {payload });
+          localStorage.setItem("cart",JSON.stringify({ payload }));
         sweet({
           title: "Adding Cart",
           text: "Item added to cart successfully.",
