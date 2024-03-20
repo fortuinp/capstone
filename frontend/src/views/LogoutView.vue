@@ -30,9 +30,10 @@ export default {
   },
   methods: {
     logOut() {
-      this.user = null;
       localStorage.removeItem("loggedUser");
-      this.$router.push({ name: "home" });
+      this.$router.push({ name: "home" }).then(() => {
+        location.reload();
+      });
     }
   }
 };
@@ -49,3 +50,4 @@ export default {
   place-items: center;
 }
 </style>
+

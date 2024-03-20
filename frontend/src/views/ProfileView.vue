@@ -67,9 +67,6 @@ export default {
   methods: {
     deleteUser() {
       this.$store.dispatch("deleteUser", this.loggedUser.UserID);
-      this.logOut();
-    },
-    logOut() {
       localStorage.removeItem("loggedUser");
       this.$router.push({ name: "home" });
     },

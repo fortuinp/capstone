@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import axios from "axios";
 import sweet from "sweetalert";
 import router from "@/router";
-//import AunthenticatedUser from "@/services/AunthenticatedUser";
+import AunthenticatedUser from "@/services/AunthenticatedUser";
 //import { useCookies } from "vue3-cookies";
 const lifeURL = "https://capstone-w5uv.onrender.com/";
 
@@ -152,7 +152,7 @@ export default createStore({
             "loggedUser",
             JSON.stringify({ token, result, msg })
           );
-          // AunthenticatedUser.applyToken(token)
+           AunthenticatedUser.applyToken(token)
 
           sweet({
             title: msg,
@@ -161,7 +161,7 @@ export default createStore({
             timer: 2000,
           });
 
-          router.push({ name: "home" }).then(location.reload());
+          
         } else {
           sweet({
             title: "Error",
@@ -179,6 +179,7 @@ export default createStore({
         });
       }
     },
+
 
     logout() {
       localStorage.removeItem("loggedUser");
@@ -288,6 +289,7 @@ export default createStore({
       }
     },
 
+
     async addCart(context, payload) {
       try {
         (await axios.post(`${lifeURL}user/${payload.userID}/cart`, payload))
@@ -308,7 +310,6 @@ export default createStore({
         });
       }
     },
-
     async fetchCart(context, id) {
       console.log(id);
       try {
@@ -323,7 +324,6 @@ export default createStore({
         });
       }
     },
-
     async deleteCart(context, id) {
       try {
         await axios.delete(`${lifeURL}user/${id}/cart`);
@@ -344,7 +344,6 @@ export default createStore({
         });
       }
     },
-
     async deleteCartItem(context, id) {
       console.log(id);
       try {

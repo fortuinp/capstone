@@ -29,9 +29,10 @@
                   required
                 />
               </div>
-              <div class="mb-3">
+              <!-- <div class="mb-3">
                 <p class="lead">{{ message }}</p>
-              </div>
+                
+              </div> -->
               <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Login</button>
                 
@@ -46,6 +47,8 @@
 </template>
 
 <script>
+//import router from '@/router';
+
 export default {
   data() {
     return {
@@ -62,16 +65,11 @@ export default {
   },
   methods: {
     signIn() {
-      this.$store.dispatch("login", this.payload)
-        .then(() => {
-         
-          location.reload()
-          
-        })
-        
-    },
-  },
+      this.$store.dispatch("login", this.payload);
+    }
+  }
 }
+
 </script>
 
 <style scoped>
