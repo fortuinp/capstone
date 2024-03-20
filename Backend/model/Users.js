@@ -1,6 +1,6 @@
 import { dbconnection as db } from "../config/index.js";
 import { hash, compare } from "bcrypt";
-import {createToken} from "../middleware/Aunthentication.js"
+import { createToken } from "../middleware/Aunthentication.js";
 
 class Users {
   fetchUsers(req, res) {
@@ -36,7 +36,7 @@ class Users {
   async createUser(req, res) {
     //payload
     let data = req.body;
-    data.userPass= await hash(data?.userPass, 8);
+    data.userPass = await hash(data?.userPass, 8);
     let user = {
       emailAdd: data.emailAdd,
       userPass: data.userPass,
@@ -63,80 +63,79 @@ class Users {
     });
   }
 
-  login(req,res){
-    const{emailAdd,userPass}=req.body
-    const qry=`
+  login(req, res) {
+    const { emailAdd, userPass } = req.body;
+    const qry = `
     SELECT UserID,firstName,lastName,userAge,gender,emailAdd,userPass,userRole
           FROM Users
           WHERE emailAdd='${emailAdd}';
-    `
-    db.query(qry, async(err,result) => {
-      if (err) throw err
-      if(!result?.length){
+    `;
+    db.query(qry, async (err, result) => {
+      if (err) throw err;
+      if (!result?.length) {
         res.json({
           status: res.statusCode,
-          msg:"wrong email provided"
+          msg: "wrong email provided",
         });
-      }else{
-       //validate pswd
-       const validPass = await compare(userPass, result[0].userPass);
-          if (validPass) {
-            const token = createToken({
-              emailAdd,
-              userPass,
-            });
-            res.json({
-              status: res.statusCode,
-              msg: "You're logged in.",
-              token,
-              result: result[0],
-            });
-          } else {
-            res.json({
-              status: res.statusCode,
-              msg: " Please provide the correct password.",
-            });
-   
-      }}})
-      
+      } else {
+        //validate pswd
+        const validPass = await compare(userPass, result[0].userPass);
+        if (validPass) {
+          const token = createToken({
+            emailAdd,
+            userPass,
+          });
+          res.json({
+            status: res.statusCode,
+            msg: "You're logged in.",
+            token,
+            result: result[0],
+          });
+        } else {
+          res.json({
+            status: res.statusCode,
+            msg: " Please provide the correct password.",
+          });
+        }
+      }
+    });
   }
 
-  async updateUser(req,res){
-    const data=req.body
-    if(data?.userPass){
-      data.userPass=await hash(data?.userPass,8)
+  async updateUser(req, res) {
+    const data = req.body;
+    if (data?.userPass) {
+      data.userPass = await hash(data?.userPass, 8);
     }
-    const qry=`
+    const qry = `
   UPDATE Users 
   SET ?
-  WHERE userID= ${req.params.id};`
-  db.query(qry,[data], (err) => {
-      if (err) throw err 
-        res.json({
-          status: res.statusCode,
-          msg: "user updated",
-        
-        })
-      })
-
+  WHERE userID= ${req.params.id};`;
+    db.query(qry, [data], (err) => {
+      if (err) throw err;
+      res.json({
+        status: res.statusCode,
+        msg: "user updated",
+      });
+    });
   }
 
-  deleteUser(req,res){
-    const qry=`
+  deleteUser(req, res) {
+    const qry = `
    DELETE FROM Users
    WHERE userID=${req.params.id}
-`
-   db.query(qry, (err) => {
-    if (err) throw err;
-    res.json({
-      status: res.statusCode,
-      msg:"deleted"
+`;
+    db.query(qry, (err) => {
+      if (err) throw err;
+      res.json({
+        status: res.statusCode,
+        msg: "deleted",
+      });
     });
-  });
   }
 }
 
 
-export{
-    Users
-}
+
+
+
+export { Users };
