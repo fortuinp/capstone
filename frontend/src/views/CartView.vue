@@ -4,6 +4,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th>#id</th>
             <th>Product Name</th>
             <th>Price</th>
             <th>Qty</th>
@@ -13,6 +14,8 @@
         </thead>
         <tbody>
           <tr v-for="item in cart" :key="item.cartID">
+           
+            <td>{{ item.cartID }}</td>
             <td>{{ item.prodName }}</td>
             <td>{{ item.amount}}</td>
             <td>{{item.quantity}}</td>
@@ -22,7 +25,7 @@
               <form class="form-inline">
                 
                 <button
-                  @click.prevent="deleteCartItem(item?.cartID)"
+                  @click.prevent="deleteCartItem(item.cartID)"
                   class="btnDelete">
                   <i class="bi bi-archive-fill"></i>
                 </button>
@@ -80,11 +83,12 @@
 export default {
   computed: {
     cart() {
-      return this.$store.state.cart || []; // Ensure that cart is always an array
+      return this.$store.state.cart || [];
+      
     },
     loggedUser() {
       return JSON.parse(localStorage.getItem("loggedUser")).result;
-    },
+    }
   },
   created() {
     this.$store.dispatch("fetchCart", this.loggedUser.UserID);
@@ -93,12 +97,16 @@ export default {
     totalSum() {
       let sum = 0;
       for (let item of this.cart) {
-        sum += parseFloat(item.amount) * parseInt(item.quantity);
+        sum += parseFloat(item.TotalAmount);
       }
       return sum.toFixed(2);
     },
-    deleteCartItem(id) {
-      this.$store.dispatch("deleteCartItem", id);
+    deleteCartItem(cartID) {
+      const payload = {
+        userID: this.loggedUser.UserID,
+        cartID: cartID
+      };
+      this.$store.dispatch("deleteCartItem", payload);
     },
     deleteCart() {
       this.$store.dispatch("deleteCart", this.loggedUser.UserID);
@@ -106,4 +114,3 @@ export default {
   }
 }
 </script>
-

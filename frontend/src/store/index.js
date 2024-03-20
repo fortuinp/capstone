@@ -63,6 +63,7 @@ export default createStore({
     async fetchUsers(context) {
       try {
         let { results } = (await axios.get(`${lifeURL}users`)).data;
+        
         if (results) {
           context.commit("setUsers", results);
         }
@@ -214,6 +215,7 @@ export default createStore({
     async fetchProducts(context) {
       try {
         let { results } = (await axios.get(`${lifeURL}products`)).data;
+        console.log();
         if (results) {
           context.commit("setProducts", results);
         }
@@ -301,8 +303,8 @@ export default createStore({
         (await axios.post(`${lifeURL}user/${payload.userID}/cart`, payload))
           .data;
         context.dispatch("fetchCart", payload);
-        context.commit("setCart", {payload });
-          localStorage.setItem("cart",JSON.stringify({ payload }));
+        // context.commit("setCart", {payload });
+        //   localStorage.setItem("cart",JSON.stringify({ payload }));
         sweet({
           title: "Adding Cart",
           text: "Item added to cart successfully.",
@@ -320,9 +322,12 @@ export default createStore({
     },
     async fetchCart(context, id) {
       console.log(id);
+    
       try {
         let { results } = (await axios.get(`${lifeURL}user/${id}/carts`)).data;
+        console.log(`${lifeURL}user/${id}/carts`);
         context.commit("setCart", results);
+        localStorage.setItem("cart", JSON.stringify({ results }));
       } catch (e) {
         sweet({
           title: "Error",
@@ -332,6 +337,32 @@ export default createStore({
         });
       }
     },
+    
+    async deleteCartItem(context, payload) {
+      console.log(payload);
+      console.log(payload.cartID);
+      try {
+        await axios.delete(`${lifeURL}user/${payload.userID}/cart/${payload.cartID}`);
+        console.log(`${lifeURL}user/${payload.userID}/cart/${payload.cartID}`);
+        
+    
+        await context.dispatch("fetchCart", payload.cartID);
+        sweet({
+          title: "Delete cart",
+          text: "Item deleted from cart successfully.",
+          icon: "success",
+          timer: 2000,
+        });
+      } catch (e) {
+        sweet({
+          title: "Error",
+          text: "An error occurred when deleting cart item.",
+          icon: "error",
+          timer: 2000,
+        });
+      }
+    },
+    
     async deleteCart(context, id) {
       try {
         await axios.delete(`${lifeURL}user/${id}/cart`);
@@ -347,27 +378,6 @@ export default createStore({
         sweet({
           title: "Error",
           text: "An error occurred when deleting cart.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
-    async deleteCartItem(context, id) {
-      console.log(id);
-      try {
-        await axios.delete(`${lifeURL}user/${id}/cart/${id}`);
-
-        context.dispatch("fetchCart", id);
-        sweet({
-          title: "Delete cart",
-          text: "Item deleted from cart successfully.",
-          icon: "success",
-          timer: 2000,
-        });
-      } catch (e) {
-        sweet({
-          title: "Error",
-          text: "An error occurred when deleting cart item.",
           icon: "error",
           timer: 2000,
         });
