@@ -103,26 +103,6 @@
 
 /* About Content */
 
-.About1 {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-    url(https://i.ibb.co/LxB9ktR/istockphoto-909416522-612x612.jpg) no-repeat
-      top center fixed;
-  -webkit-background-size: cover;
-  background-size: cover;
-  margin-bottom: -10px;
-}
-
-.paragraphs {
-  font-family:  sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: xx-large;
-  padding-top: 130px;
-}
-
-.PicA {
-  width: 766px;
-}
 
 
 

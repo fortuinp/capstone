@@ -4,8 +4,5 @@
   </div>
 </template>
 <style>
-.about{
-  background-color:white
-  ;
-}
+
 </style>
