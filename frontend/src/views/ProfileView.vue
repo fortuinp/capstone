@@ -92,7 +92,7 @@ export default {
  /* background-color:rgb(230, 221, 221);  */
 }
 .profile{
-  background-color:rgb(230, 221, 221);
+  background-color:rgb(203, 200, 200)
   /* background-color: #538f48 */
 }
 #updatebtn{

@@ -172,7 +172,8 @@ background-color: #538f48
 }
 
 .Products{
-
+  background-color:white
+  ;
 }
 
 @media screen and (max-width:412){ 

@@ -44,7 +44,7 @@
             <td></td>
             <td></td>
             <td id="sum">{{totalSum()}}</td>
-            <td><button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Clear cart</button></td>
+            <td><button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-secondary" >Clear cart</button></td>
           </tr>
         </tfoot>
       </table>
@@ -53,7 +53,7 @@
   <br />
 
   <div class="d-flex justify-content-between">
-    <router-link to="/products" class="btn btn-primary">Continue Shopping</router-link>
+    <router-link to="/products" class="btn btn-primary" id="clear">Continue Shopping</router-link>
     <!-- <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Clear cart</button> -->
     
 
@@ -126,6 +126,9 @@ export default {
  border-top: coral;
 }
 .cart{
-  background-color: darkgray;
+  background-color: rgb(203, 200, 200);
+}
+#clear{
+  background-color: #538f48
 }
 </style>

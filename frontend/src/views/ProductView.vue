@@ -1,4 +1,5 @@
 <template>
+   
     <div v-if="product" class="ProdCont text-center mt-3">
         <h1 class="text-danger">{{ product.prodName }}</h1>
 
