@@ -175,4 +175,10 @@ background-color: #538f48
 
 }
 
+@media screen and (max-width:412){ 
+  #cardPro{
+    width: auto;
+  }
+}
+
 </style>
