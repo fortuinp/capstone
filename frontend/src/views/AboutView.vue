@@ -41,7 +41,6 @@
 }
 .heading{
 
-
   color:#538f48  ;
   font-size: xx-large;
   font-weight: 900;

@@ -114,7 +114,7 @@ color:#A5856C ;
 }
 #icon{
 font-size: 1.5rem;
- /* color: #b6b6b6; */
+ color: #b6b6b6;
 /* color: #692525; */
 }
 </style>
