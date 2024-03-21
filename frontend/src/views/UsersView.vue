@@ -1,30 +1,31 @@
 <template>
-    <div class="container ">
+
+    <div class="container">
       <div class="mt-4">
-        <nav class="navbar nav-pills nav-underline bg-black w-100  w-md-25 justify-content-center mx-auto" role="tablist">
+        <nav class="navbar nav-pills nav-underline  w-100  w-md-25 justify-content-center mx-auto" role="tablist">
           <ul class="d-block d-md-flex mt-2  ">
             <li class="nav-item mx-2">
-              <router-link to="/admin" class="nav-link link-light">Products </router-link>
+              <router-link to="/admin" class="nav-link link-dark">Products </router-link>
             </li>
             <li class="nav-item mx-4">
-              <a class="nav-link link-light">Users</a>
+              <a class="nav-link link-dark">Users</a>
             </li>
           </ul>
   
         </nav>
-      </div>
+     
   
       <div class=" prodBtn d-block d-md-flex row text-end mt-4">
+        <div class="row">
         <div class="col">
-          <input v-model="searchInput" type="text" placeholder="Search User by firstName" @input="Search"
+          <input v-model="searchInput" type="text" placeholder="Search by first name" @input="Search"
             class="form-control">
         </div>
-        <div class="col ">
-          <button class=" btn btn-dark"> Filter</button>
-        </div>
+
         <div class="col-2 mx-3">
-          <button class=" btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add a User</button>
+          <button class=" btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add User</button>
         </div>
+      </div>
         <!-- Modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -119,6 +120,8 @@
           <th>Email Address</th>
           <th>User Role</th>
           <th> Action</th>
+          <th></th>
+          
         </tr>
       </thead>
       <tbody class="text-center mb-5">
@@ -130,6 +133,7 @@
           <td>{{ user.gender }}</td>
           <td>{{ user.emailAdd }}</td>
           <td> {{ user.userRole }}</td>
+     
           <td> <button class=" btn btn-dark" data-bs-toggle="modal" :data-bs-target="'#edit' + user.UserID"> Edit</button></td>
   
           <td><button class="  btn btn-dark" data-bs-toggle="modal" :data-bs-target="'#delete' + user.UserID">
@@ -140,6 +144,7 @@
     <div class="row mx-auto" v-else>
       <Spinner />
     </div>
+  </div>
   </template>
     
   <script>

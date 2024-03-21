@@ -1,11 +1,13 @@
 <template>
-    <div class="container-fluid bg-light text-center">
+    <div class="footer">
+    <div class="container text-center">
         <div class="row">
-            <p class="footer1 lead text-black    "> NatureNurtures &copy;
+            <p class="footer1 lead text-black   "> NatureNurtures &copy;
                 <span> {{ currYear }}</span>
             </p>
         </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -20,4 +22,14 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.footer {
+  /* left: 0;
+  bottom: 0;
+  width: 100%; */
+  /* margin-top: 3rem; */
+  background-color: #538f48;
+  color: white;
+  text-align: center;
+}
+</style>

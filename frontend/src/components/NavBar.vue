@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black bg-gradient sticky-top text-center text-md-start" id="Shift">
+    <nav class="navbar navbar-expand-lg navbar-dark  sticky-top text-center text-md-start " id="Shift">
       <div class="container-fluid justify-content-center">
   
         <a href="/">
@@ -75,6 +75,8 @@
   </script>
   
   <style scoped>
-  /* Add your scoped styles here */
+.navbar{
+  background-color:#538f48
+}
   </style>
   

@@ -1,12 +1,14 @@
 <template>
-  <div class="profile">
-    <h1>User Profile</h1>
+  <div class="profile mb-4">
     <div class="container">
+
       <div class="row d-flex justify-content-center">
-        <img src="https://i.postimg.cc/mZ70qtgL/profile.webp" alt="User" class="img-fluid img-thumbnail">
+        <img src='https://i.ibb.co/xfz76Ck/istockphoto-1495088043-612x612-removebg-preview.png' id="user" alt="User" class="img-fluid img-thumbnail">
       </div>
-      <form>
-        <div class="mb-3">
+
+      
+      <form class="form">
+        <div class="mb-3 justify-content-center">
           <label for="firstName" class="form-label">First Name</label>
           <input type="text" class="form-control" placeholder="First Name" name="firstName" v-model="payload.firstName" required>
         </div>
@@ -28,17 +30,21 @@
         </div>
        
 
-        <div class="mb-3">
+        <div class="mb-3" id="">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" placeholder="Password" name="password" required>
         </div>
+        <div class="row">
         <div class="col-auto">
-          <button type="button" @click.prevent="editUser" class="btn btn-primary">Update Profile</button>
+          <button type="button" @click.prevent="editUser" class="btn btn-primary" id="updatebtn">Update Profile</button>
         </div>
         <div class="col-auto">
           <button @click.prevent="deleteUser" class="btn btn-danger">Delete Profile</button>
         </div>
+      </div>
       </form>
+    
+
     </div>
   </div>
 </template>
@@ -54,7 +60,8 @@ export default {
         "userAge": JSON.parse(localStorage.getItem("loggedUser")).result.userAge,
         "gender": JSON.parse(localStorage.getItem("loggedUser")).result.gender,
         "emailAdd": JSON.parse(localStorage.getItem("loggedUser")).result.emailAdd,
-        "userPass": JSON.parse(localStorage.getItem("loggedUser")).result.userPass
+        "userPass": JSON.parse(localStorage.getItem("loggedUser")).result.userPass,
+        "userProfile":JSON.parse(localStorage.getItem("loggedUser")).result.userProfile
   
       }
     }
@@ -80,8 +87,16 @@ export default {
 </script>
 
 <style>
-.profile {
-  text-align: center;
+.container{
+  /* background-color: #538f48; */
+ /* background-color:rgb(230, 221, 221);  */
+}
+.profile{
+  background-color:rgb(230, 221, 221);
+  /* background-color: #538f48 */
+}
+#updatebtn{
+  background-color:  grey;
 }
 .profile h1 {
   margin: 1rem;
@@ -91,7 +106,9 @@ export default {
   font-size: 1.5rem;
 }
 .img-fluid {
-  width: 20rem !important;
+  width: 10rem !important;
   margin: 1rem;
+  border: none;
 }
+
 </style>

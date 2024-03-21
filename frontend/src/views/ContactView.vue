@@ -1,5 +1,6 @@
 <template>
-  <main class="container-fluid vh-100" id="contact">
+  div
+  <main class="contact vh-100" id="contact">
 
 <section class=" container mb-4" >
 
@@ -113,7 +114,7 @@ color:#A5856C ;
 }
 #icon{
 font-size: 1.5rem;
- color: #b6b6b6;
+ /* color: #b6b6b6; */
 /* color: #692525; */
 }
 </style>

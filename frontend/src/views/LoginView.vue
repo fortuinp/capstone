@@ -1,6 +1,6 @@
 <template>
-  <div class="login">
-    <h1>Login</h1>
+  <div class="login vh-100 ">
+    <h1 class="h1 mb-5 mt-3" >NatureNurtures</h1>
     <div class="container" id="login">
       <div class="row justify-content-md-center">
         <div class="col">
@@ -78,22 +78,29 @@ export default {
   height: 100%;
   width: 100%;
 }
+.h1{
+  text-align: center;
+  color: #538f48;
+}
 
 #login {
   background-color: white;
   width: 50%;
-  box-shadow: 0px 0px 23px 10px #7cbd1e;
+  box-shadow: 0px 0px 23px 10px #538f48;
   padding: 2rem;
 }
 
 #loginLogo {
   width: 10rem !important;
 }
-
+.btn{
+  background-color: #538f48;
+}
 .btnLogin {
   width: 100%;
   height: 2.5rem;
-  background-color: #bceb3c;
+  color: #538f48;
+  background-color: #538f48;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -105,7 +112,7 @@ export default {
 
 .newAccount a {
   text-decoration: none;
-  color: #7cbd1e;
+  color: #538f48;
 }
 
 @media screen and (min-width: 300px) and (max-width: 719px) {

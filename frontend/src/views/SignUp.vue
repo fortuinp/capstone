@@ -108,7 +108,7 @@
                 </div>
               </form>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 mb-4">
             <img src="https://i.postimg.cc/5ycXRtfC/basket-removebg-preview.png" alt="contact" class="img-fluid" >
 
 
@@ -128,7 +128,7 @@
 <style scoped>
 .signup .btnSignUp {
   border: 1px solid transparent;
-  background-color:  #7cbd1e;
+  background-color:  #538f48;
   border-radius: 1rem;
   justify-content: space-between;
   padding: 1rem;
@@ -138,12 +138,13 @@
   color:black;
 }
 .signup .btnSignUp:hover{
-  background-color:  #bceb3c;
+  background-color: darkgray;
 }
 
 
 .signup h1{
   text-align: center;
+  color: #538f48;
 }
 
 </style>
@@ -186,3 +187,6 @@ methods:{
 
 
 </script>
+<style>
+
+</style>

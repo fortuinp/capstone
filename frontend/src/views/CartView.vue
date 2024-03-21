@@ -1,6 +1,8 @@
 <template>
-  <div class="panel-body">
-    <div class="table-responsive">
+  <div class="mt-3 cart vh-100">
+  <div class="panel-body ">
+    <h1>here is your cart</h1>
+    <div class="table-responsive mt-3">
       <table class="table">
         <thead>
           <tr>
@@ -40,6 +42,7 @@
             <td class="text-right"><strong>Total Amount Due :</strong></td>
             <td></td>
             <td></td>
+            <td></td>
             <td id="sum">{{totalSum()}}</td>
             <td><button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Clear cart</button></td>
           </tr>
@@ -75,6 +78,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 
@@ -107,6 +111,7 @@ export default {
         cartID: cartID
       };
       this.$store.dispatch("deleteCartItem", payload);
+      location.reload()
     },
     deleteCart() {
       this.$store.dispatch("deleteCart", this.loggedUser.UserID);
@@ -114,3 +119,13 @@ export default {
   }
 }
 </script>
+
+
+<style>
+.table{
+ border-top: coral;
+}
+.cart{
+  background-color: darkgray;
+}
+</style>
