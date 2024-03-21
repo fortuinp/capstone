@@ -1,5 +1,5 @@
 <template>
-  div
+  
   <main class="contact vh-100" id="contact">
 
 <section class=" container mb-4" >

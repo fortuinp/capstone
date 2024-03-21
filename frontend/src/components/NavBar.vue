@@ -1,9 +1,9 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark  sticky-top text-center text-md-start " id="Shift">
+    <nav class="navbar navbar-expand-lg navbar-LIGHT  sticky-top text-center text-md-start " id="Shift">
       <div class="container-fluid justify-content-center">
   
         <a href="/">
-          <img src="https://i.ibb.co/SQyXzw7/bearr.webp" alt="Logo" class="w-25">
+          <img src="https://i.ibb.co/qx7BPP0/png-removebg-preview.png" alt="Logo" class="w-25">
         </a>
         <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

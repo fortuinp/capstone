@@ -1,7 +1,9 @@
 <template>
-  <div class="mt-3 cart vh-100">
+  <div class="cart vh-100">
   <div class="panel-body ">
-    <h1>here is your cart</h1>
+    <!-- <div class="mt-3"> -->
+    <h1 >Here is your cart</h1>
+  <!-- </div> -->
     <div class="table-responsive mt-3">
       <table class="table">
         <thead>
@@ -15,6 +17,7 @@
           </tr>
         </thead>
         <tbody>
+         
           <tr v-for="item in cart" :key="item.cartID">
            
             <td>{{ item.cartID }}</td>
@@ -125,7 +128,11 @@ export default {
 .table{
  border-top: coral;
 }
+.panel-body{
+  
+  background-color:rgb(230, 221, 221);
+}
 .cart{
-  background-color: darkgray;
+  background-color:rgb(230, 221, 221);
 }
 </style>

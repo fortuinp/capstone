@@ -24,12 +24,12 @@ export default {
 
 <style scoped>
 .footer {
-  /* left: 0;
-  bottom: 0;
-  width: 100%; */
+  /* left: 0;/
   /* margin-top: 3rem; */
   background-color: #538f48;
   color: white;
   text-align: center;
+  bottom: 0;
+  width: 100%; 
 }
 </style>

@@ -20,13 +20,13 @@
           <button @click="sortItems" id="sort" class=" btn btn-dark"> Sort by Price</button>
         
         </div>
-        <div class="col d-grid d-md-flex"></div>
-        <div class=" row gap-5 mb-5 ms-5  d-grid d-md-flex" v-if="products">
-          <Card v-for="product in displayedProducts" :key="product.prodID" class=" text-center" id="cardPro">
-            <template #cardHeader>
-              <img :src="product.prodUrl" class="card-img-top mx-auto mt-4  w-75" alt="Pro">
-            </template>
-            <template #cardBody>
+        <div class="ProdCar col mb-5">
+      <div class=" row d-grid d-md-flex" v-if="products">
+        <Card v-for="product in displayedProducts" :key="product.prodID" class=" text-center" id="cardPro">
+          <template #cardHeader>
+            <img :src="product.prodUrl" class="card-img-top mx-auto mt-4  " alt="Pro">
+          </template>
+          <template #cardBody>
               <h4 class="card-text text-dark mt-3 ">
                 {{ product.prodName }}
               </h4>
@@ -42,11 +42,12 @@
               </template>
             </Card>
           </div>
+         
           <div class="row mx-auto" v-else>
             <Spinner />
           </div>
         </div>
-        
+        </div>
       </div>
 
  
@@ -118,8 +119,8 @@ export default {
 
 </script>
 
-
-<style>
+  
+<style >
 #drop{
 width: 15rem;
 }
@@ -129,50 +130,48 @@ width: 15rem;
 #sort{
   width: auto;
 }
-.ProdCar {
-  font-family: sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: x-large;} */
-
-  .prodBtn {
-  font-family: sans-serif;
+prodBtn {
+  font-family: "Passero One", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
 }
- .ProdHead {
+.ProdHead {
   font-family: "Kenia", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: xx-large;
 }
 
-.card{
-    width: 18rem;
-    height: 25rem;
-background-color: #538f48
+.ProdCar {
+  font-family: "Passero One", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: x-large;
+  background-color: #538f48 ;
 }
-.card-img-top{
-    width: 8rem;
-    height: 20rem;
-}
-
 #cardPro{
   width: 25%;
-/* background-color: grey; */
+  background-color: aqua;
 }
 
 /* Product COntent */
 .ProdCont {
-  font-family:  sans-serif;
+  font-family: "Passero One", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: x-large;
 }
+.card{
 
-.Products{
-
+  background-color: black;
 }
+.card-img-top {
+  aspect-ratio: 1/1;
+ 
+}
+
+
+
 
 </style>
