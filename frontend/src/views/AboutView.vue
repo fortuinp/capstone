@@ -32,11 +32,11 @@
 .about{
  
   color: black;
-  background-color:rgb(203, 200, 200);
+  background-color:white;
   font-family:  sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: xx-large;
+  font-size: x-large;
   padding-top: 130px;
 }
 .heading{
@@ -46,7 +46,7 @@
   font-weight: 900;
 }
 .PicA {
-  width: 48.3rem;
+  width: 48rem;
 }
 
 

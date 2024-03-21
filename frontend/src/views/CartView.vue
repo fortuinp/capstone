@@ -1,9 +1,9 @@
 <template>
   <div class="mt-3 cart vh-100">
   <div class="panel-body ">
-    <h1>here is your cart</h1>
+    <h1>Here is your cart</h1>
     <div class="table-responsive mt-3">
-      <table class="table">
+      <table class="table table-secondary">
         <thead>
           <tr>
             <th>#id</th>
@@ -132,10 +132,10 @@ export default {
 
 <style>
 .table{
- border-top: coral;
+background-color: black;
 }
 .cart{
-  background-color: rgb(203, 200, 200);
+  background-color: white
 }
 #clear{
   background-color: #538f48

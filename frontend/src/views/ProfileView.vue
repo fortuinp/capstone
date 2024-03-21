@@ -1,13 +1,11 @@
 <template>
   <div class="profile mb-4">
     <div class="container">
-
+      
       <div class="row d-flex justify-content-center">
         <img src='https://i.ibb.co/xfz76Ck/istockphoto-1495088043-612x612-removebg-preview.png' id="user" alt="User" class="img-fluid img-thumbnail">
       </div>
-
-      
-      <form class="form">
+      <form class="form justify-content-center">
         <div class="mb-3 justify-content-center">
           <label for="firstName" class="form-label">First Name</label>
           <input type="text" class="form-control" placeholder="First Name" name="firstName" v-model="payload.firstName" required>
@@ -92,8 +90,7 @@ export default {
  /* background-color:rgb(230, 221, 221);  */
 }
 .profile{
-  background-color:rgb(203, 200, 200);
-  /* background-color: #538f48 */
+ 
 }
 #updatebtn{
   background-color:  grey;
@@ -108,7 +105,10 @@ export default {
 .img-fluid {
   width: 10rem !important;
   margin: 1rem;
-  border: none;
-}
 
+}
+.form{
+  background-color: white;
+  width: auto;
+}
 </style>
