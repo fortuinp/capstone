@@ -1,9 +1,7 @@
 <template>
-  <div class="cart vh-100">
+  <div class="mt-3 cart vh-100">
   <div class="panel-body ">
-    <!-- <div class="mt-3"> -->
-    <h1 >Here is your cart</h1>
-  <!-- </div> -->
+    <h1>here is your cart</h1>
     <div class="table-responsive mt-3">
       <table class="table">
         <thead>
@@ -17,7 +15,6 @@
           </tr>
         </thead>
         <tbody>
-         
           <tr v-for="item in cart" :key="item.cartID">
            
             <td>{{ item.cartID }}</td>
@@ -25,10 +22,10 @@
             <td>{{ item.amount}}</td>
             <td>{{item.quantity}}</td>
             <td>{{ item.TotalAmount }}</td>
-          
+         
             <td>
               <form class="form-inline">
-                
+               
                 <button
                   @click.prevent="deleteCartItem(item.cartID)"
                   class="btnDelete">
@@ -37,8 +34,9 @@
               </form>
             </td>
 
+
           </tr>
-          
+         
         </tbody>
         <tfoot>
             <tr>
@@ -55,12 +53,15 @@
   </div>
   <br />
 
+
   <div class="d-flex justify-content-between">
     <router-link to="/products" class="btn btn-primary" id="clear">Continue Shopping</router-link>
     <!-- <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Clear cart</button> -->
-    
+   
+
 
   </div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,12 +87,15 @@
 
 
 
+
+
+
 <script>
 export default {
   computed: {
     cart() {
       return this.$store.state.cart || [];
-      
+     
     },
     loggedUser() {
       return JSON.parse(localStorage.getItem("loggedUser")).result;
@@ -124,15 +128,16 @@ export default {
 </script>
 
 
+
+
 <style>
 .table{
  border-top: coral;
 }
-.panel-body{
-  
-  background-color:rgb(230, 221, 221);
-}
 .cart{
-  background-color:rgb(230, 221, 221);
+  background-color: rgb(203, 200, 200);
+}
+#clear{
+  background-color: #538f48
 }
 </style>

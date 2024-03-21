@@ -46,7 +46,7 @@
   font-weight: 900;
 }
 .PicA {
-  width: 766px;
+  width: 48.3rem;
 }
 
 
