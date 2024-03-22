@@ -2,7 +2,7 @@
 <div class="contact">
   <main class="contact" id="contact">
     <section class="container mb-4">
-      <h2 class="h1-responsive font-weight-bold mb-5 my-4 text-center mx-auto animate__animated animate__flip" id="head">Reach me
+      <h2 class="h1-responsive font-weight-bold mb-5 my-4 text-center mx-auto animate__animated animate__flip" id="head">Reach Us
       </h2>
       <div class="row mb-5">
         <div class="col-md-7 mb-md-0 mb-5">
@@ -51,7 +51,7 @@
                 </div>
               </div>
               <div class="text-center text-md-left mt-4">
-                <a id="btncontact" class="btn btn-secondary"
+                <a id="btncontact" class="btn btn-dark"
                   onclick="document.getElementById('contact-form').submit();">Send</a>
               </div>
 
@@ -115,7 +115,7 @@ export default {
 <style scoped>
 #text {
   color: #538f48;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-shadow:red;
 }
 
@@ -134,7 +134,6 @@ label {
 #icon {
   font-size: 1.5rem;
   color: black;
-  /* color: #692525; */
 }
 #head{
   font-size: 2rem;

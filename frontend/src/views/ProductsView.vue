@@ -193,10 +193,6 @@ export default {
 
 
 @media screen and (max-width:412) {
-
-  /* #cardPro{
-    width: auto;
-  } */
   .card {
     width: auto;
     height: auto;

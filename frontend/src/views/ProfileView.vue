@@ -86,13 +86,6 @@ export default {
 </script>
 
 <style>
-.container{
-  /* background-color: #538f48; */
- /* background-color:rgb(230, 221, 221);  */
-}
-.profile{
- 
-}
 #updatebtn{
   background-color:  grey;
 }
@@ -114,9 +107,5 @@ export default {
 }
 .form-label{
   font-weight: bolder;
-}
-.form-control{
-
-  
 }
 </style>

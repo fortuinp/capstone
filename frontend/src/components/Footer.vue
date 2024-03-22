@@ -24,8 +24,6 @@ export default {
 
 <style scoped>
 .footer {
-  /* left: 0;/
-  /* margin-top: 3rem; */
   background-color: #538f48;
   color: white;
   text-align: center;
