@@ -1,13 +1,13 @@
 <template>
+  <div class="home">
   <div class="container" id="home">
-
     <div class="row mx-auto mb-5 mt-5">
       <div class="col justify-content-center align-content-center text-center">
         <h1 class="mt-5">
-          NatureNurtures
+          Nurture Your World
         </h1>
         <p>
-          Nurture Your World: Fulfill Every Need with Our Array of Plant Selection.
+       Fulfill Every Need with Our Array of Plant Selection.
         </p>
         <div>
           <button></button>
@@ -30,7 +30,7 @@
               <h4 class="card-text text-dark mt-3 ">
                 Plants for Medicinal Purposes
               </h4>
-              <router-link :to="{ name: 'products' }"><button class="btn bg-black text-white mb-3">
+              <router-link :to="{ name: 'products' }"><button id="shopnow" class="btn bg-black text-white mb-3">
                   Shop now </button> </router-link>
             </template>
 
@@ -65,6 +65,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -80,10 +81,12 @@ export default {
 
 <style>
 #aboutpic {
-  width: 30rem;
-  box-shadow: #538f48;
+  width: 35rem;
+  box-shadow: #0e170c;
 }
-
+#shopnow{
+  border-bottom: #538f48;
+}
 
 
 .ProdCar {
@@ -109,12 +112,14 @@ export default {
   font-size: xx-large;
 }
 
-.container .card:hover {
-  transform: translateY(-20px);
+.home .container .card:hover {
+  /* transform: translateY(-20px); */
+  transform: scale(1.05); /* Increase size on hover */
+  transition: transform 0.3s ease; /* Smooth transition */
 }
 
 
-.card {
+.home .card {
   width: 22rem;
   height: 20rem;
   border-color: green;
