@@ -111,4 +111,11 @@ export default {
   background-color: white;
   width: auto;
 }
+.form-label{
+  font-weight: bolder;
+}
+.form-control{
+
+  
+}
 </style>

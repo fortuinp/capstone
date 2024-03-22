@@ -13,7 +13,7 @@
   </div>
   <div class="d-block d-md-flex justify-content-center">
     <div>
-      <img src="https://i.ibb.co/7JNncv4/com.png" alt="Pic" class="PicA d-none d-md-inline">
+      <img src="https://i.ibb.co/4PFQ5vf/cov.png alt=" class="PicA d-none d-md-inline">
     </div>
     <div class="about    w-md-50  w-100  text-center">
       Our mission is to enrich lives through plants. We believe that plants have the power to transform spaces, improve well-being, and connect us with nature. By offering a diverse range of plants, from those with medicinal properties to culinary delights and decorative wonders, we aim to cater to every need and preference.

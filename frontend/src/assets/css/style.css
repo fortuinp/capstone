@@ -5,6 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* "https://i.ibb.co/3cYHQ2z/cover.png"  */
+/* <img src="https://i.ibb.co/sF8wNw8/alllll.png" */
+/* "https://i.ibb.co/4PFQ5vf/cov.png"  */
 /* "https://i.ibb.co/7JNncv4/com.png" */
 /* #538f48 */
 /* imports */
@@ -78,41 +81,7 @@
   font-weight: 400;
   font-style: normal;
 }
-.Scroller {
-  margin-left: 95px;
-}
-/* Sliding show */
-.slider {
-  font-family:  sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: x-large;
-  width: 80%;
-  scroll-snap-type: x mandatory;
-  margin-inline: auto;
-  animation: sliding 10s linear infinite;
-}
 
-.slider > * {
-  width: 10rem;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Animation */
-@keyframes sliding {
-  50% {
-    transform: translateX(50%);
-    color: red;
-  }
-  50% {
-    transform: translateX(20%);
-  }
-
-}
-
-/* About Content */
 
 
 
@@ -322,10 +291,7 @@ hr {
     }
 
     table td::before {
-      /*
-        * aria-label has no advantage, it won't be read inside a table
-        content: attr(aria-label);
-        */
+ 
 
       float: left;
       font-weight: bold;

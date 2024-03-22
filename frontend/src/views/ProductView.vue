@@ -1,7 +1,7 @@
 <template>
    
     <div v-if="product" class="ProdCont text-center mt-3">
-        <h1 class="text-danger">{{ product.prodName }}</h1>
+        <h1 class="text-black">{{ product.prodName }}</h1>
 
         <img :src="product.prodUrl2" class="card-img-top mx-auto mt-4 border border-3 border-black p-5 w-25" alt="Pro">
         <h5 class="w-50 mx-auto m-3">{{ product.prodDescription }}</h5>

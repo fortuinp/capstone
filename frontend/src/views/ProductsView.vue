@@ -1,6 +1,6 @@
 <template>
-  <div class="Products">
-      <div class="container-fluid">
+
+      <div class="container">
         <h2 class="ProdHead text-center mb-4">Products</h2>
 
 
@@ -21,8 +21,8 @@
           <button @click="sortItems" id="sort" class=" btn btn-dark"> Sort by Price</button>
        
         </div>
-        <div class="col d-grid d-md-flex"></div>
-        <div class=" row gap-5 mb-5 ms-5  d-grid d-md-flex" v-if="products">
+        <div class="col "></div>
+        <div class=" row gap-5 mb-5 " v-if="products">
           <Card v-for="product in displayedProducts" :key="product.prodID" class=" text-center" id="cardPro">
             <template #cardHeader>
               <img :src="product.prodUrl" class="card-img-top mx-auto mt-4  w-75" alt="Pro">
@@ -48,7 +48,7 @@
           </div>
         </div>
        
-      </div>
+  
 
 
  
@@ -147,7 +147,9 @@ width: 15rem;
   font-family: sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: x-large;} */
+  font-size: x-large;
+
+;} */
 
 
   .prodBtn {
@@ -157,7 +159,7 @@ width: 15rem;
   font-size: x-large;
 }
  .ProdHead {
-  font-family: "Kenia", sans-serif;
+  font-family:  sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: xx-large;
@@ -166,18 +168,20 @@ width: 15rem;
 
 .card{
     width: 18rem;
-    height: 25rem;
+    height: 20rem;
 background-color: #538f48
 }
 .card-img-top{
     width: 8rem;
-    height: 20rem;
+    height: 16rem;
 }
 
 
 #cardPro{
-  width: 25%;
-/* background-color: grey; */
+width: 20rem;
+height: auto;
+color: red
+
 }
 
 
@@ -197,9 +201,26 @@ background-color: #538f48
 
 
 @media screen and (max-width:412){
-  #cardPro{
+  /* #cardPro{
     width: auto;
-  }
+  } */
+  .card{
+    width: auto;
+    height: auto;
+background-color: #538f48
+}
+.card-img-top{
+    width: auto;
+    height: auto;
+}
+
+
+#cardPro{
+width: auto;
+height: auto;
+color: red
+
+}
 }
 
 
