@@ -1,7 +1,7 @@
 <template>
-  <div class="home ms-auto">
-  <div class="container d-flex justify-content-center flex-column" id="home">
-  
+  <div class="home">
+  <div class="container d-grid justify-content-center  mx-auto" id="home">
+    
     <div class="row d-grid d-md-flex mb-5 ">
       <div class="col align-items-center ext-center">
         <h1 class="homehead mt-5">

@@ -343,7 +343,8 @@ export default createStore({
         console.log(`${lifeURL}user/${payload.userID}/cart/${payload.cartID}`);
         
     
-        await context.dispatch("fetchCart", payload.cartID);
+        context.dispatch("fetchCart", payload.userID);
+        location.reload()
         sweet({
           title: "Delete cart",
           text: "Item deleted from cart successfully.",

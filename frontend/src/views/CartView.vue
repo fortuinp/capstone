@@ -59,7 +59,7 @@
 
 
       <!-- Button trigger modal -->
-<button type="button" @click.prevent="deleteCart(loggedUser?.userId)" class="btnCheckoutCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" @click.prevent="deleteCart" class="btnCheckoutCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Checkout Cart
 </button>
 
@@ -72,7 +72,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-        <img src="https://i.postimg.cc/Vkf1VPP2/success-removebg-preview.png" alt="success" width="50" height="50"><br>
+        <img src="https://i.ibb.co/qx7BPP0/png-removebg-preview.png" alt="success" width="50" height="50"><br>
         We'll send you payment information and delivery arrangement via email
       </div>
       <div class="modal-footer">
@@ -92,6 +92,7 @@
 
 
 <script>
+import sweet from "sweetalert";
 export default {
   
   computed: {
@@ -121,7 +122,7 @@ export default {
         cartID: cartID
       };
       this.$store.dispatch("deleteCartItem", payload);
-      location.reload()
+      // location.reload()
     },
     deleteCart() {
       this.$store.dispatch("deleteCart", this.loggedUser.UserID);
