@@ -107,9 +107,7 @@ export default {
   #hmtbn{
    background-color: #538f48;
   }
-  #hmbtn2{
-
-  }
+  
 
 .ProdCar {
   font-family: sans-serif;

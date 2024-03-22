@@ -12,26 +12,11 @@
 /* #538f48 */
 /* imports */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Coiny&family=Concert+One&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Changa+One:ital@0;1&family=Coiny&family=Concert+One&family=Days+One&display=swap');
 
 
 
-::-webkit-scrollbar {
-  display: none;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  color: #2c3e50;
-  background: white
-
-}
-.admin{
-  /* background-color:rgb(230, 221, 221); */
-}
 
 .footer1 {
   font-family: sans-serif;
@@ -47,43 +32,6 @@
   font-size: x-large;
 }
 
-/* Home Content */
-.welcome {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-    url(https://i.ibb.co/g4gbPYW/istockphoto-1288737452-612x612-transformed-1.jpg)
-      no-repeat top center fixed;
-  -webkit-background-size: cover;
-  background-size: cover;
-}
-.heading1 {
-  padding-top: 567px;
-  font-family: sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: x-large;
-  padding-left: 110px;
-}
-
-.HomeBtn {
-  padding-top: 600px;
-  font-family:  sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: xx-large;
-}
-
-.heading2 {
-  font-family:  sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.heading3 {
-
-  font-weight: 400;
-  font-style: normal;
-}
-
 
 
 
@@ -93,116 +41,11 @@
   font-family:  sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: medium;
+  font-size: medium
 }
 
 
 
-.contact-icon {
-  color: #000000;
-}
-
-.contact-icon {
-  position: relative;
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  margin: 10px 3px;
-  line-height: 60px;
-  border-radius: 50%;
-  color: #ffffff;
-  background-color: rgb(27, 27, 27);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.contact-icon:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 50%;
-  opacity: 0;
-  box-shadow: 0 0 0 1px #fff;
-  transition: all 0.2s ease-in-out;
-}
-
-.contact-icon:hover {
-  background-color: #505050;
-}
-
-.contact-icon:hover:after {
-  opacity: 1;
-  transform: scale(1.12);
-  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
-}
-
-.contact-icon:hover {
-  color: #ffffff;
-}
-
-hr {
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-/* Media Query */
-
-  
-#cardPro{
-  width: auto;
-}
-  #home1 {
-    margin-left: 17px;
-    margin-top: 20px;
-    width: 230px;
-  }
-  #home2 {
-    margin-top: 20px;
-    margin-left: 27px;
-    width: 13rem;
-  }
-
-  .Scroller {
-    margin-left: 20px;
-  }
-
-  .slider {
-    font-family: "Passero One", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: x-large;
-    width: 75%;
-    scroll-snap-type: x mandatory;
-    margin-inline: auto;
-    animation: none !important;
-    margin-left: -45px;
-  }
-
-  .heading1 {
-    padding-top: 460px;
-    width: 350px;
-    margin-left: -100px;
-  }
-  .heading2 {
-    width: 220px;
-    margin-left: 17px;
-    font-size: large;
-  }
-  .HomeBtn {
-    padding-top: 10px;
-    padding-bottom: 20px;
-    margin: auto;
-  }
-  .ContHead {
-    font-size:small;
-    padding-top: 440px;
-    padding-bottom: 20px;
-    width:250px;
-    padding-left:-20px;
-  }
 
 
 /* Admin COntent */
@@ -243,21 +86,7 @@ hr {
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .Scroller {
-    margin-left: 20px;
-  }
-
-  .slider {
-    font-family: "Passero One", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: x-large;
-    width: 75%;
-    scroll-snap-type: x mandatory;
-    margin-inline: auto;
-    animation: none !important;
-    margin-left: -45px;
-  }
+  
 
   @media screen and (max-width: 600px) {
     table {
@@ -304,21 +133,7 @@ hr {
       border-bottom: 0;
     }
   }
-  .Scroller {
-    margin-left: 20px;
-  }
 
-  .slider {
-    font-family: "Passero One", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: x-large;
-    width: 75%;
-    scroll-snap-type: x mandatory;
-    margin-inline: auto;
-    animation: none !important;
-    margin-left: -45px;
-  }
 }
 
 

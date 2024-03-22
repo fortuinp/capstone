@@ -92,7 +92,7 @@
 
 
 <script>
-import sweet from "sweetalert";
+
 export default {
   
   computed: {
