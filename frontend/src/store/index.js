@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import axios from "axios";
 import sweet from "sweetalert";
 import router from "@/router";
-//import AunthenticatedUser from "@/services/AunthenticatedUser";
+import AunthenticatedUser from "@/services/AunthenticatedUser";
 //import { useCookies } from "vue3-cookies";
 const lifeURL = "https://capstone-w5uv.onrender.com/";
 
@@ -157,16 +157,13 @@ export default createStore({
             "loggedUser",
             JSON.stringify({ token, result, msg })
           );
-         //AunthenticatedUser.applyToken(token)
-
+         AunthenticatedUser.applyToken(token)
           sweet({
             title: msg,
             text: `Welcome Back, ${result?.firstName} ${result?.lastName}`,
             icon: "success",
             timer: 2000,
           });
-
-          
         } else {
           sweet({
             title: "Error",
@@ -174,7 +171,7 @@ export default createStore({
             icon: "error",
             timer: 2000,
           });
-          router.push({ name: "login" });
+          router.push({ name: "home" });
         }
       } catch {
         sweet({

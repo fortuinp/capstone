@@ -18,28 +18,28 @@
             <li class="nav-item">
               <router-link to="/about" class="nav-link">About</router-link>
             </li>
-            <li class="nav-item" v-if="user">
+            <li class="nav-item" v-if="loggedUser">
               <router-link to="/products" class="nav-link">Shop</router-link>
             </li>
-            <li class="nav-item" v-if="user">
+            <li class="nav-item" v-if="loggedUser">
               <router-link to="/cart" class="nav-link">Cart</router-link>
             </li>
-            <li class="nav-item" v-if="user">
+            <li class="nav-item" v-if="loggedUser">
               <router-link to="/profile" class="nav-link">Profile</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/contact" class="nav-link">Contact</router-link>
             </li>
-            <!-- <li class="nav-item" v-if="!user">
+            <!-- <li class="nav-item" v-if="!loggedUser">
               <router-link to="/register" class="nav-link">Sign Up</router-link>
             </li> -->
-            <li class="nav-item" v-if="!user">
+            <li class="nav-item" v-if="!loggedUser">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
-            <li class="nav-item" v-if="user && user.userRole === 'admin'">
+            <li class="nav-item" v-if="loggedUser && loggedUser.userRole === 'admin'">
               <router-link to="/admin" class="nav-link">Admin</router-link>
             </li>
-            <li class="nav-item" v-if="user">
+            <li class="nav-item" v-if="loggedUser">
               <router-link to="/logout" class="nav-link">Logout</router-link>
             </li>
           </ul>
@@ -57,13 +57,13 @@
     },
     computed: {
       loggedUser() {
-        return this.$store.state.user;
+        return this.$store.state.user || JSON.parse(localStorage.getItem("loggedUser"))?.result
       }
 
     },
-    mounted() {
-      this.user = this.loggedUser || JSON.parse(localStorage.getItem("loggedUser")).result;
-    },
+    // mounted() {
+    //   this.user = this.loggedUser ;
+    // },
     methods: {
       logOut() {
         this.user = null;

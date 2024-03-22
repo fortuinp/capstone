@@ -30,7 +30,7 @@
 
         <div class="mb-3" id="">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" placeholder="Password" name="password" required>
+          <input type="password" class="form-control" v-model="payload.userPass" placeholder="Password" name="password" required>
         </div>
         <div class="row">
         <div class="col-auto">
@@ -52,14 +52,14 @@ export default {
   data() {
     return {
       payload: {
-        "userID": JSON.parse(localStorage.getItem("loggedUser")).result.UserID,
-        "firstName": JSON.parse(localStorage.getItem("loggedUser")).result.firstName,
-        "lastName": JSON.parse(localStorage.getItem("loggedUser")).result.lastName,
-        "userAge": JSON.parse(localStorage.getItem("loggedUser")).result.userAge,
-        "gender": JSON.parse(localStorage.getItem("loggedUser")).result.gender,
-        "emailAdd": JSON.parse(localStorage.getItem("loggedUser")).result.emailAdd,
-        "userPass": JSON.parse(localStorage.getItem("loggedUser")).result.userPass,
-        "userProfile":JSON.parse(localStorage.getItem("loggedUser")).result.userProfile
+        userID: JSON.parse(localStorage.getItem("loggedUser")).result.UserID,
+        firstName: JSON.parse(localStorage.getItem("loggedUser")).result.firstName,
+        lastName: JSON.parse(localStorage.getItem("loggedUser")).result.lastName,
+        userAge: JSON.parse(localStorage.getItem("loggedUser")).result.userAge,
+        gender: JSON.parse(localStorage.getItem("loggedUser")).result.gender,
+        emailAdd: JSON.parse(localStorage.getItem("loggedUser")).result.emailAdd,
+        userPass: null,
+        userProfile:JSON.parse(localStorage.getItem("loggedUser")).result.userProfile
   
       }
     }
@@ -78,6 +78,7 @@ export default {
     editUser() {
       const userID = this.loggedUser.UserID;
         const updateData = Object.assign({}, {userID}, this.payload)
+        console.log(updateData);
         this.$store.dispatch('updateUser', updateData)
       }
   }

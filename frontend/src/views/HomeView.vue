@@ -1,7 +1,7 @@
 <template>
   <div class="home">
   <div class="container" id="home">
-    <div class="row mx-auto mb-5 mt-5">
+    <div class="row d-grid d-md-flex mx-auto mb-5 mt-5">
       <div class="col justify-content-center align-content-center text-center">
         <h1 class="mt-5">
           Nurture Your World
@@ -12,17 +12,17 @@
         <div>
           <button></button>
         </div>
-        <router-link :to="{ name: 'products' }"><button class="btn bg-black text-white mb-3 mx-3">
+        <router-link :to="{ name: 'products' }"><button class="btn bg-black text-white mb-3 mx-3" id="hmbtn">
             Explore now </button> </router-link>
-        <router-link :to="{ name: 'about' }"><button class="btn bg-black text-white mb-3">
+        <router-link :to="{ name: 'about' }"><button class="btn bg-black text-white mb-3" id="hmbtn2">
             Learn More</button> </router-link>
       </div>
-      <div class="col-6">
-        <img src="https://i.ibb.co/4PFQ5vf/cov.png" id="aboutpic" alt="aboutpic" loading="lazy">
+      <div class="col-6 d-none d-md-inline">
+        <img src="https://i.ibb.co/4PFQ5vf/cov.png" id="aboutpic" alt="aboutpic" loading="lazy" >
       </div>
     </div>
     <div class="col">
-      <div class="row gap-5 mb-5 d-flex ">
+      <div class="row gap-5 mb-5 d-grid d-md-flex">
         <div class=" col-3 homecard">
           <Card class=" text-center" id="cardPro">
             <template #cardHeader>
@@ -75,7 +75,10 @@ export default {
   components: {
     Card
   }
+
+
 }
+
 </script>
 
 
@@ -176,6 +179,12 @@ export default {
   #cardPro {
     width: auto;
     height: auto;
+
+  }
+  #hmtbn{
+   background-color: #538f48;
+  }
+  #hmbtn2{
 
   }
 }

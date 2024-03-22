@@ -65,9 +65,9 @@ export default {
   methods: {
     signIn() {
       this.$store.dispatch("login", this.payload);
-      router.push({ name: "home" });
-    
+      router.push({ name: "home" }); 
     }
+    
   }
 }
 
