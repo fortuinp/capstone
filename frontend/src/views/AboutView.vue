@@ -13,7 +13,7 @@
   </div>
   <div class="d-block d-md-flex justify-content-center">
     <div>
-      <img src="https://i.ibb.co/4PFQ5vf/cov.png alt=" class="PicA d-none d-md-inline">
+      <img src="https://i.ibb.co/sF8wNw8/alllll.png" class="PicA d-none d-md-inline">
     </div>
     <div class="about    w-md-50  w-100  text-center">
       Our mission is to enrich lives through plants. We believe that plants have the power to transform spaces, improve well-being, and connect us with nature. By offering a diverse range of plants, from those with medicinal properties to culinary delights and decorative wonders, we aim to cater to every need and preference.
@@ -34,7 +34,7 @@
   color: black;
   background-color:white;
   font-family:  sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
   font-size: x-large;
   padding-top: 130px;
@@ -44,6 +44,9 @@
   color:#538f48  ;
   font-size: xx-large;
   font-weight: 900;
+  font-family: "Coiny", system-ui;
+
+  font-style: normal;
 }
 .PicA {
   width: 48rem;

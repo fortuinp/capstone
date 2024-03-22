@@ -1,7 +1,7 @@
 <template>
   <div class="mt-3 cart vh-100">
   <div class="panel-body ">
-    <h1>Here is your cart</h1>
+    <h1 class="text">Here is your cart</h1>
     <div class="table-responsive mt-3">
       <table class="table table-secondary">
         <thead>
@@ -54,34 +54,35 @@
   <br />
 
 
-  <div class="d-flex justify-content-between">
-    <router-link to="/products" class="btn btn-primary" id="clear">Continue Shopping</router-link>
-    <!-- <button type="button" @click.prevent="deleteCart(loggedUser?.UserID)" class="btn btn-success">Clear cart</button> -->
-   
+  <div class="d-flex justify-content-between ms-2 me-3">
+    <router-link to="/products" class="btn btn-dark">Continue Shopping</router-link>
 
 
-  </div>
+      <!-- Button trigger modal -->
+<button type="button" @click.prevent="deleteCart(loggedUser?.userId)" class="btnCheckoutCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Checkout Cart
+</button>
 
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold" id="exampleModalLabel">Thank you for shopping with us</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <img src="https://i.postimg.cc/Vkf1VPP2/success-removebg-preview.png" alt="success" width="50" height="50">
-          <br>
-          We'll send you payment information and delivery arrangement via email
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title fw-bold" id="exampleModalLabel">Thank you for shopping with us</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="https://i.postimg.cc/Vkf1VPP2/success-removebg-preview.png" alt="success" width="50" height="50"><br>
+        We'll send you payment information and delivery arrangement via email
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+       
       </div>
     </div>
   </div>
+</div>
+</div>
   </div>
 </template>
 
@@ -92,6 +93,7 @@
 
 <script>
 export default {
+  
   computed: {
     cart() {
       return this.$store.state.cart || [];
@@ -105,6 +107,7 @@ export default {
     this.$store.dispatch("fetchCart", this.loggedUser.UserID);
   },
   methods: {
+    
     totalSum() {
       let sum = 0;
       for (let item of this.cart) {
@@ -139,5 +142,9 @@ background-color: black;
 }
 #clear{
   background-color: #538f48
+}
+.text{
+  color: black;
+  font-family: "Days One", sans-serif;
 }
 </style>

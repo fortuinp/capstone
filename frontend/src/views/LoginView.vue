@@ -4,7 +4,7 @@
     <div class="container" id="login">
       <div class="row justify-content-md-center">
         <div class="col">
-          <img src="https://i.postimg.cc/hjgmLH8X/logo.png" alt="logo" class="img-fluid" id="loginLogo">
+          <img src="https://i.ibb.co/qx7BPP0/png-removebg-preview.png" alt="logo" class="img-fluid" id="loginLogo">
           <div class="col-md-auto">
             <form @submit.prevent="signIn">
               <div class="mb-3">
@@ -122,6 +122,10 @@ export default {
 
   .newAccount {
     font-size: 1rem;
+  }
+  .form-control{
+    font-weight: bold;
+    color: #538f48;
   }
 }
 

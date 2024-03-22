@@ -30,9 +30,7 @@
             <li class="nav-item">
               <router-link to="/contact" class="nav-link">Contact</router-link>
             </li>
-            <!-- <li class="nav-item" v-if="!loggedUser">
-              <router-link to="/register" class="nav-link">Sign Up</router-link>
-            </li> -->
+            
             <li class="nav-item" v-if="!loggedUser">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
@@ -77,6 +75,9 @@
   <style scoped>
 .navbar{
   background-color:#538f48
+}
+.nav-link{
+font-weight: bolder;
 }
   </style>
   

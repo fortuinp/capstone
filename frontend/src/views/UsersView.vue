@@ -1,5 +1,5 @@
 <template>
-
+<div class="users vh-100">
     <div class="container">
       <div class="mt-4">
         <nav class="navbar nav-pills nav-underline  w-100  w-md-25 justify-content-center mx-auto" role="tablist">
@@ -145,6 +145,7 @@
       <Spinner />
     </div>
   </div>
+</div>
   </template>
     
   <script>
